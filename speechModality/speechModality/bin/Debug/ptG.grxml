@@ -1,0 +1,162 @@
+﻿<?xml version="1.0"?>
+<grammar xml:lang="pt-PT" version="1.0" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+  <rule id="rootRule" scope="public">
+    <one-of>
+    <item>
+    <ruleref uri="#object"/>
+      </item>
+    </one-of>
+  </rule>
+
+    <rule id="object">
+      <one-of>
+        <item>
+          <tag>out.Categoria = "cidades";</tag>
+          <one-of>
+            <item>
+              <ruleref uri="#Cidades"/>
+              <tag>out.CidadeUnica = rules.Cidades.Cidades;</tag>
+            </item>
+            <item>
+              <ruleref uri="#VerboEscolherCidadeRestaurante"/>
+              <ruleref uri="#Cidades"/>
+              <tag>out.CidadeUnica = rules.Cidades.Cidades;</tag>
+            </item>
+          </one-of>
+        </item>
+        <item>
+          <tag>out.Categoria = "Comidas";</tag>
+          <one-of>
+            <item>
+              <ruleref uri="#Comidas"/>
+              <tag>out.Comidas = rules.Comidas.Comidas;</tag>
+            </item>
+            <item>
+              <ruleref uri="#VerboEscolherTipoComida"/>
+              <ruleref uri="#Comidas"/>
+              <tag>out.Comidas = rules.Comidas.Comidas;</tag>
+            </item>
+          </one-of>
+        </item>  
+        <item>
+          <tag>out.Categoria = "Tipodeestabelecimento";</tag>
+          <one-of>
+            <item>
+              <ruleref uri="#Tipodeestabelecimento"/>
+              <tag>out.Tipodeestabelecimento = rules.Tipodeestabelecimento.Tipodeestabelecimento;</tag>
+            </item>
+            <item>
+              <ruleref uri="#VerboEscolherTipoComida"/>
+              <ruleref uri="#Tipodeestabelecimento"/>
+              <tag>out.Tipodeestabelecimento = rules.Tipodeestabelecimento.Tipodeestabelecimento;</tag>
+            </item>
+          </one-of>
+        </item>  
+    
+    </one-of>
+  </rule>
+
+
+  <rule id="VerboEscolherCidadeRestaurante">
+    <item repeat="1">
+      <tag>out.VerboEscolherCidadeRestaurante = "VerboEscolherCidadeRestaurante"</tag>
+      <one-of>
+        <item>mostrar</item>
+        <item>ver</item>
+        <item>pesquisar</item>
+      </one-of>
+    </item>
+  </rule>
+  
+  <rule id="VerboEscolherTipoComida">
+    <item repeat="1">
+      <tag>out.VerboEscolherTipoComida = "VerboEscolherTipoComida"</tag>
+      <one-of>
+        <item>quero</item>
+        <item>escolho</item>
+      </one-of>
+    </item>
+  </rule>
+  
+  <rule id="Comidas">
+    <item repeat="1">
+      <one-of>
+        <item>
+          Gastronomia regional: Portuguesa<tag>out.Comidas="Gastronomia regional: Portuguesa"</tag>
+        </item>
+        <item>
+          Café<tag>out.Comidas="Café"</tag>
+        </item>
+        <item>
+          Sushi<tag>out.Comidas="Sushi"</tag>
+        </item>
+      </one-of>
+    </item>
+  </rule>
+  
+  <rule id="Tipodeestabelecimento">
+    <item repeat="1">
+      <one-of>
+        <item>
+          Restaurantes<tag>out.Tipodeestabelecimento="Restaurantes"</tag>
+        </item>
+        <item>
+          Refeições rápidas<tag>out.Tipodeestabelecimento="Refeições rápidas"</tag>
+        </item>
+        <item>
+          Sobremesa<tag>out.Tipodeestabelecimento="Sobremesa"</tag>
+        </item>
+        <item>
+          Café e chá<tag>out.Tipodeestabelecimento="Café e chá"</tag>
+        </item>
+        <item>
+          Pastelarias<tag>out.Tipodeestabelecimento="Pastelarias"</tag>
+        </item>
+        <item>
+          Bares e pubs<tag>out.Tipodeestabelecimento="Bares e pubs"</tag>
+        </item> 
+      </one-of>
+    </item>
+  </rule>
+    
+  <rule id="Cidades">
+    <item repeat="1">
+      <one-of>
+        <item>
+          Aveiro<tag>out.Cidades = "Aveiro"</tag>
+        </item>
+        <item>
+          Porto<tag>out.Cidades = "Porto"</tag>
+        </item>
+        <item>
+          Lisboa<tag>out.Cidades = "Lisboa"</tag>
+        </item>
+        <item>
+          Viseu<tag>out.Cidades = "Viseu"</tag>
+        </item>
+        <item>
+          Coimbra<tag>out.Cidades = "Coimbra"</tag>
+        </item>
+        <item>
+          Braga<tag>out.Cidades = "Braga"</tag>
+        </item>
+        <item>
+          Guimarães<tag>out.Cidades = "Guimarães"</tag>
+        </item>
+        <item>
+          Sintra<tag>out.Cidades = "Sintra"</tag>
+        </item>
+        <item>
+          Vila Nova de Gaia<tag>out.Cidades = "Vila Nova de Gaia"</tag>
+        </item>
+        <item>
+          Albufeira<tag>out.Cidades = "Albufeira"</tag>
+        </item>
+        <item>
+          Leiria<tag>out.Cidades = "Leiria"</tag>
+        </item>
+      </one-of>
+    </item>
+  </rule>
+
+</grammar>
