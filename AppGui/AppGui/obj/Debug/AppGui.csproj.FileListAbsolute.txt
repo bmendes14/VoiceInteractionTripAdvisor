@@ -94,3 +94,25 @@ C:\Users\bmend\OneDrive\Ambiente de Trabalho\trabalhoIM\AppGui\AppGui\obj\Debug\
 C:\Users\bmend\OneDrive\Ambiente de Trabalho\trabalhoIM\AppGui\AppGui\obj\Debug\AppGui.Properties.Resources.resources
 C:\Users\bmend\OneDrive\Ambiente de Trabalho\trabalhoIM\AppGui\AppGui\obj\Debug\AppGui.csproj.GenerateResource.cache
 C:\Users\bmend\OneDrive\Ambiente de Trabalho\trabalhoIM\AppGui\AppGui\obj\Debug\AppGui.csproj.CopyComplete
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\AppGui\AppGui\bin\Debug\AppGui.exe.config
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\AppGui\AppGui\bin\Debug\AppGui.exe
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\AppGui\AppGui\bin\Debug\AppGui.pdb
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\AppGui\AppGui\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\AppGui\AppGui\bin\Debug\WebDriver.dll
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\AppGui\AppGui\bin\Debug\mmisharp.pdb
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\AppGui\AppGui\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\AppGui\AppGui\bin\Debug\WebDriver.xml
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\AppGui\AppGui\obj\Debug\AppGui.csprojAssemblyReference.cache
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\AppGui\AppGui\obj\Debug\MainWindow.g.cs
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\AppGui\AppGui\obj\Debug\App.g.cs
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\AppGui\AppGui\obj\Debug\AppGui_MarkupCompile.cache
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\AppGui\AppGui\obj\Debug\AppGui_MarkupCompile.lref
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\AppGui\AppGui\obj\Debug\MainWindow.baml
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\AppGui\AppGui\obj\Debug\AppGui.g.resources
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\AppGui\AppGui\obj\Debug\AppGui.Properties.Resources.resources
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\AppGui\AppGui\obj\Debug\AppGui.csproj.GenerateResource.cache
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\AppGui\AppGui\obj\Debug\AppGui.csproj.CoreCompileInputs.cache
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\AppGui\AppGui\obj\Debug\AppGui.csproj.CopyComplete
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\AppGui\AppGui\obj\Debug\AppGui.exe
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\AppGui\AppGui\obj\Debug\AppGui.pdb
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\AppGui\AppGui\bin\Debug\Microsoft.Speech.dll

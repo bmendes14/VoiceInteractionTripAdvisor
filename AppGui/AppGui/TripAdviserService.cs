@@ -17,13 +17,15 @@ namespace AppGui
     {
         private String startUrl = "https://www.tripadvisor.pt/";
         private IWebDriver driver;
+        private Tts t = new Tts();
 
-
+       
         public TripAdviserService()
         {
             driver = new ChromeDriver();
             driver.Navigate().GoToUrl("https://www.tripadvisor.pt/");
             driver.Manage().Window.Maximize();
+           
         }
 
         public void baseURL()
@@ -45,7 +47,8 @@ namespace AppGui
                 // nAinda não clica no sitio certo !! 
                 driver.FindElement(By.XPath("//span[@class='ui_icon restaurants brand-quick-links-QuickLinkTileItem__icon--2iguo']")).Click();
                 driver.FindElement(By.XPath("//input[@class='input-text-input-ManagedTextInput__managedInput--2RESp']")).SendKeys(place);
-                driver.FindElement(By.XPath("//span[@class='common-typeahead-results-BasicResult__resultTitle--1TQbu' and text()='" + place+"']")).Click();  
+                System.Threading.Thread.Sleep(1000);
+                driver.FindElement(By.XPath("//span[@class='common-typeahead-results-BasicResult__resultTitle--1TQbu' and contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'),'" + place.ToLower() +"')]")).Click();  
             }
             // when a method call is invalid for the object's current state.
             catch (InvalidOperationException e)
@@ -62,7 +65,7 @@ namespace AppGui
         {
             try
             {
-                driver.FindElement(By.XPath("//span[@class='name' and text()='"+food+"']")).Click();
+                driver.FindElement(By.XPath("//span[@class='name' and  contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'),'" + food+"')]")).Click();
 
               
             }// when a method call is invalid for the object's current state.
@@ -80,7 +83,7 @@ namespace AppGui
         {
             try
             {
-                driver.FindElement(By.XPath("//a[@onclick='event.preventDefault();' and text()='" + establishment + "']")).Click();
+                driver.FindElement(By.XPath("//a[@onclick='event.preventDefault();' and  contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '" + establishment+ "')]")).Click();
 
 
             }// when a method call is invalid for the object's current state.

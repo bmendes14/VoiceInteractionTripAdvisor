@@ -117,3 +117,22 @@ C:\Users\bmend\OneDrive\Ambiente de Trabalho\trabalhoIM\speechModality\speechMod
 C:\Users\bmend\OneDrive\Ambiente de Trabalho\trabalhoIM\speechModality\speechModality\obj\Debug\speechModality.csproj.CopyComplete
 C:\Users\bmend\OneDrive\Ambiente de Trabalho\trabalhoIM\speechModality\speechModality\obj\Debug\speechModality.exe
 C:\Users\bmend\OneDrive\Ambiente de Trabalho\trabalhoIM\speechModality\speechModality\obj\Debug\speechModality.pdb
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\speechModality\speechModality\bin\Debug\ptG.grxml
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\speechModality\speechModality\bin\Debug\speechModality.exe.config
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\speechModality\speechModality\bin\Debug\speechModality.exe
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\speechModality\speechModality\bin\Debug\speechModality.pdb
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\speechModality\speechModality\bin\Debug\mmisharp.pdb
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\speechModality\speechModality\obj\Debug\speechModality.csprojAssemblyReference.cache
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\speechModality\speechModality\obj\Debug\MainWindow.g.cs
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\speechModality\speechModality\obj\Debug\App.g.cs
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\speechModality\speechModality\obj\Debug\speechModality_Content.g.cs
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\speechModality\speechModality\obj\Debug\speechModality_MarkupCompile.cache
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\speechModality\speechModality\obj\Debug\speechModality_MarkupCompile.lref
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\speechModality\speechModality\obj\Debug\MainWindow.baml
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\speechModality\speechModality\obj\Debug\speechModality.g.resources
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\speechModality\speechModality\obj\Debug\speechModality.Properties.Resources.resources
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\speechModality\speechModality\obj\Debug\speechModality.csproj.GenerateResource.cache
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\speechModality\speechModality\obj\Debug\speechModality.csproj.CoreCompileInputs.cache
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\speechModality\speechModality\obj\Debug\speechModality.csproj.CopyComplete
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\speechModality\speechModality\obj\Debug\speechModality.exe
+C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\speechModality\speechModality\obj\Debug\speechModality.pdb
