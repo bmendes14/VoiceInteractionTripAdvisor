@@ -178,7 +178,7 @@ namespace AppGui
                 finished = false;
                 player.Stream.Position = 0;
                 player.PlaySync();
-                //player.Stream = null;  //  NEW 2015
+                player.Stream = null;  //  NEW 2015
 
             }
         }

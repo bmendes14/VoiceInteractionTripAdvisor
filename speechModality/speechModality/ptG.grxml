@@ -11,6 +11,15 @@
     <rule id="object">
       <one-of>
         <item>
+          <tag>out.Limpar = "Limpar";</tag>
+          <one-of>
+            <item>
+              <ruleref uri="#Limpar"/>
+              <tag>out.Limpar = rules.Limpar.Limpar;</tag>
+            </item>
+          </one-of>
+        </item>
+        <item>
           <tag>out.Categoria = "cidades";</tag>
           <one-of>
             <item>
@@ -51,9 +60,10 @@
               <tag>out.Tipodeestabelecimento = rules.Tipodeestabelecimento.Tipodeestabelecimento;</tag>
             </item>
           </one-of>
-        </item>  
-    
-    </one-of>
+        </item>
+       
+
+      </one-of>
   </rule>
 
 
@@ -67,6 +77,8 @@
       </one-of>
     </item>
   </rule>
+
+ 
   
   <rule id="VerboEscolherTipoComida">
     <item repeat="1">
@@ -155,6 +167,24 @@
         <item>
           Leiria<tag>out.Cidades = "Leiria"</tag>
         </item>
+      </one-of>
+    </item>
+  </rule>
+  
+  <rule id="Limpar">
+    <item repeat="1">
+      <one-of>
+        <item>
+          Limpar
+          <tag>out.Limpar = "Limpar"</tag>
+        </item>
+        <item>
+          Apagar
+          <tag>out.Limpar = "Apagar"</tag>
+        </item>
+        <item>
+          Seleção
+          <tag>out.Limpar = "Seleção"</tag></item>
       </one-of>
     </item>
   </rule>

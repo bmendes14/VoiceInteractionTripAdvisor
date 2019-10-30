@@ -52,6 +52,9 @@ namespace AppGui
                 case "Tipodeestabelecimento":
                     service.ShowEstablishment(json.recognized[1].ToString());
                     break;
+                case "Limpar":
+                    service.Clear();
+                    break;
 
             }
 

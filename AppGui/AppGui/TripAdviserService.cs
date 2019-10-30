@@ -28,6 +28,12 @@ namespace AppGui
            
         }
 
+        public static IWebElement FindElementIfExists(IWebDriver driver, By by)
+        {
+            var elements = driver.FindElements(by);
+            return (elements.Count >= 1) ? elements.First() : null;
+        }
+
         public void baseURL()
         {
             OpenUrl(startUrl);
@@ -44,11 +50,35 @@ namespace AppGui
         {
             try
             {
-                // nAinda não clica no sitio certo !! 
-                driver.FindElement(By.XPath("//span[@class='ui_icon restaurants brand-quick-links-QuickLinkTileItem__icon--2iguo']")).Click();
-                driver.FindElement(By.XPath("//input[@class='input-text-input-ManagedTextInput__managedInput--2RESp']")).SendKeys(place);
-                System.Threading.Thread.Sleep(1000);
-                driver.FindElement(By.XPath("//span[@class='common-typeahead-results-BasicResult__resultTitle--1TQbu' and contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'),'" + place.ToLower() +"')]")).Click();  
+                
+               //verificação se botão de procurar cidades já se encontra aberto
+                if(FindElementIfExists(driver,By.XPath("//div[@class='_2EFRp_bb']"))!=null)
+                {
+                    driver.FindElement(By.XPath("//div[@class='_2EFRp_bb']")).Click();
+                    System.Threading.Thread.Sleep(1000);
+                    driver.FindElement(By.XPath("//span[@class='ui_icon restaurants brand-quick-links-QuickLinkTileItem__icon--2iguo']")).Click();
+                    driver.FindElement(By.XPath("//input[@class='input-text-input-ManagedTextInput__managedInput--2RESp']")).SendKeys(place);
+                    System.Threading.Thread.Sleep(1000);
+                    driver.FindElement(By.XPath("//span[@class='common-typeahead-results-BasicResult__resultTitle--1TQbu' and contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'),'" + place.ToLower() + "')]")).Click();
+                }
+                //verificação se cidade já foi procurada e queremos procurar outra cidade
+                   else if(FindElementIfExists(driver,By.XPath("//span[@class='ui_icon caret-down brand-global-nav-geopill-GeoPill__icon--3Uykj']"))!=null)
+                {
+                    driver.FindElement(By.XPath("//span[@class='ui_icon caret-down brand-global-nav-geopill-GeoPill__icon--3Uykj']")).Click();
+                    System.Threading.Thread.Sleep(1000);
+                    driver.FindElement(By.XPath("//input[@class='input-text-input-ManagedTextInput__managedInput--2RESp']")).SendKeys(place);
+                    System.Threading.Thread.Sleep(1000);
+                    driver.FindElement(By.XPath("//span[@class='common-typeahead-results-BasicResult__resultTitle--1TQbu' and contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'),'" + place.ToLower() + "')]")).Click();
+                }
+                //caso seja o caso default, estamos na página principal sem ter procurado nenhuma cidade
+                else
+                {
+                    driver.FindElement(By.XPath("//span[@class='ui_icon restaurants brand-quick-links-QuickLinkTileItem__icon--2iguo']")).Click();
+                    driver.FindElement(By.XPath("//input[@class='input-text-input-ManagedTextInput__managedInput--2RESp']")).SendKeys(place);
+                    System.Threading.Thread.Sleep(1000);
+                    driver.FindElement(By.XPath("//span[@class='common-typeahead-results-BasicResult__resultTitle--1TQbu' and contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'),'" + place.ToLower() + "')]")).Click();
+
+                }
             }
             // when a method call is invalid for the object's current state.
             catch (InvalidOperationException e)
@@ -61,11 +91,46 @@ namespace AppGui
             }
         }
 
+        public void Clear()
+        {
+            try
+            {
+
+                System.Threading.Thread.Sleep(1000);
+
+                ////span[@class='clear' and contains(Limpar tudo )]
+                if (FindElementIfExists(driver, By.XPath("//span[@class='clear']")) != null)
+                {                   
+                    t.Speak("A Limpar");
+                    System.Threading.Thread.Sleep(1000);
+                    driver.FindElement(By.XPath("//span[@class='clear']")).Click();
+                }
+                else
+                {
+                    System.Threading.Thread.Sleep(1000);
+                    t.Speak("Botão limpar não encontrado!");
+                }
+                }// when a method call is invalid for the object's current state.
+            catch (InvalidOperationException e)
+            {
+                return;
+            }// indicate that the element being requested does not exist.
+            catch (NoSuchElementException e)
+            {
+                return;
+            }
+            catch(Exception e)
+            {
+                t.Speak("Erro!!!");
+            }
+        }
+
+
         public void ShowFood(String food)
         {
             try
             {
-                driver.FindElement(By.XPath("//span[@class='name' and  contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'),'" + food+"')]")).Click();
+                driver.FindElement(By.XPath("//span[@class='name' and  contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'),'" + food.ToLower() +"')]")).Click();
 
               
             }// when a method call is invalid for the object's current state.
@@ -83,7 +148,7 @@ namespace AppGui
         {
             try
             {
-                driver.FindElement(By.XPath("//a[@onclick='event.preventDefault();' and  contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '" + establishment+ "')]")).Click();
+                driver.FindElement(By.XPath("//a[@onclick='event.preventDefault();' and  contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '" + establishment.ToLower() + "')]")).Click();
 
 
             }// when a method call is invalid for the object's current state.
@@ -96,6 +161,8 @@ namespace AppGui
                 return;
             }
         }
+
+        
 
     }
 }
