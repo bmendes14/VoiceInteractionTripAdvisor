@@ -37,23 +37,21 @@ namespace AppGui
             
             dynamic json = JsonConvert.DeserializeObject(com);
 
-            
+         
 
             switch (json.recognized[0].ToString())
             {
                 case "cidades":
-                    service.ShowPlace(json.recognized[1].ToString());
+                    service.ShowPlace(json.recognized[1].ToString(),json.recognized[2].ToString());
                     break;
-
                 case "Comidas":
-                    service.ShowFood(json.recognized[1].ToString());
+                    service.ShowFood(json.recognized[1].ToString(), json.recognized[2].ToString());
                     break;
-
                 case "Tipodeestabelecimento":
-                    service.ShowEstablishment(json.recognized[1].ToString());
+                    service.ShowEstablishment(json.recognized[1].ToString(), json.recognized[2].ToString());
                     break;
                 case "Limpar":
-                    service.Clear();
+                    service.Clear(json.recognized[2].ToString());
                     break;
 
             }
