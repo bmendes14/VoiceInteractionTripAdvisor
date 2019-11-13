@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0"?>
-<grammar xml:lang="pt-PT" version="1.0" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+<grammar xml:lang="pt-PT" version="1.0" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0" root="rootRule">
   <rule id="rootRule" scope="public">
     <one-of>
     <item>
@@ -10,8 +10,9 @@
 
     <rule id="object">
       <one-of>
+        
         <item>
-          <tag>out.Limpar = "Limpar";</tag>
+          <tag>out.Categoria = "Limpar";</tag>
           <one-of>
             <item>
               <ruleref uri="#Limpar"/>

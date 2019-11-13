@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 using mmisharp;
 using Microsoft.Speech.Recognition;
@@ -12,6 +13,10 @@ namespace speechModality
     {
         private SpeechRecognitionEngine sre;
         private Grammar gr;
+        private Grammar toLoad;
+        private Grammar loaded;
+        private bool done;
+        private bool grammarLoaded;
         public event EventHandler<SpeechEventArg> Recognized;
         protected virtual void onRecognized(SpeechEventArg msg)
         {
@@ -38,6 +43,7 @@ namespace speechModality
             sre = new SpeechRecognitionEngine(new System.Globalization.CultureInfo("pt-PT"));
             gr = new Grammar(Environment.CurrentDirectory + "\\ptG.grxml", "rootRule");
             sre.LoadGrammar(gr);
+            grammarLoaded = false;
 
             
             sre.SetInputToDefaultAudioDevice();
@@ -45,11 +51,83 @@ namespace speechModality
             sre.SpeechRecognized += Sre_SpeechRecognized;
             sre.SpeechHypothesized += Sre_SpeechHypothesized;
 
+            sre.RecognizerUpdateReached +=
+        new EventHandler<RecognizerUpdateReachedEventArgs>(recognizer_RecognizerUpdateReached);
+
+            var fileSystemWatcher = new FileSystemWatcher();
+
+            fileSystemWatcher.Changed += FileSystemWatcher_Changed;
+
+            fileSystemWatcher.Path = @"C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\speechModality\speechModality\";
+            fileSystemWatcher.EnableRaisingEvents = true;
+        }
+
+
+        public  void recognizer_RecognizerUpdateReached(object sender, RecognizerUpdateReachedEventArgs e)
+        {
+            if (done == false)
+            {
+                if (grammarLoaded == true)
+                {
+                    sre.UnloadGrammar(loaded);
+                    Console.WriteLine("Grammar unloaded");
+                }
+                sre.LoadGrammar(toLoad);
+                Console.WriteLine("Grammar loaded");
+                grammarLoaded = true;
+                done = true;
+                loaded = toLoad;
+                
+            }
+            
+            
+        
+            
+
+        }
+
+
+        private  void FileSystemWatcher_Changed(object sender, FileSystemEventArgs e)
+        {
+            GrammarBuilder builder = new GrammarBuilder();
+            builder.AppendRuleReference(@"C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\speechModality\speechModality\Restaurants.grxml", "main");
+
+           
+            toLoad = new Grammar(builder);
+            done = false;
+            sre.RequestRecognizerUpdate();
         }
 
         private void Sre_SpeechHypothesized(object sender, SpeechHypothesizedEventArgs e)
         {
             onRecognized(new SpeechEventArg() { Text = e.Result.Text, Confidence = e.Result.Confidence, Final = false });
+        }
+
+
+        private bool processRequest(SpeechRecognizedEventArgs e)
+        {
+            switch (e.Result.Text)
+            {
+                // TODO: Decide wether to send (feeback and request)
+                case "cidades":
+                   //
+                    break;
+
+                case "Comidas":
+                    //
+                    break;
+
+                case "Tipodeestabelecimento":
+                    //
+                    break;
+                case "Limpar":
+                    //
+                    break;
+
+            }
+
+            return true;
+
         }
 
         private void Sre_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
@@ -67,7 +145,14 @@ namespace speechModality
             json += "] }";
 
             var exNot = lce.ExtensionNotification(e.Result.Audio.StartTime+"", e.Result.Audio.StartTime.Add(e.Result.Audio.Duration)+"",e.Result.Confidence, json);
-            mmic.Send(exNot);
+
+            bool pR = processRequest(e);
+
+            if (pR)
+            {
+                mmic.Send(exNot);
+            }
+           
         }
     }
 }
