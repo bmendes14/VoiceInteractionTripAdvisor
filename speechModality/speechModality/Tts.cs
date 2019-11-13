@@ -10,7 +10,7 @@ using Microsoft.Speech.AudioFormat;
 
 
 
-namespace AppGui
+namespace speechModality
 {
     class Tts
     {

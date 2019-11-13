@@ -18,6 +18,7 @@ namespace speechModality
         private bool done;
         private bool grammarLoaded;
         public event EventHandler<SpeechEventArg> Recognized;
+        private Tts t;
         protected virtual void onRecognized(SpeechEventArg msg)
         {
             EventHandler<SpeechEventArg> handler = Recognized;
@@ -27,11 +28,19 @@ namespace speechModality
             }
         }
 
+
         private LifeCycleEvents lce;
         private MmiCommunication mmic;
 
+
+        private Queue<SpeechRecognizedEventArgs> eventQueue = new Queue<SpeechRecognizedEventArgs>();
+
+        
+
         public SpeechMod()
         {
+            //init Text-To-Speech
+            t = new Tts();
             //init LifeCycleEvents..
             lce = new LifeCycleEvents("ASR", "FUSION","speech-1", "acoustic", "command"); // LifeCycleEvents(string source, string target, string id, string medium, string mode)
             //mmic = new MmiCommunication("localhost",9876,"User1", "ASR");  //PORT TO FUSION - uncomment this line to work with fusion later
@@ -112,27 +121,166 @@ namespace speechModality
 
         private bool processRequest(SpeechRecognizedEventArgs e)
         {
-            switch (e.Result.Text)
-            {
-                // TODO: Decide wether to send (feeback and request)
-                case "cidades":
-                   //
-                    break;
+           if(eventQueue.Count == 0 || (eventQueue.Count!=0 && e.Result.Semantics.ToArray()[0].Value.Value.Equals("Confirm")))
+            {  
+                switch (e.Result.Semantics.ToArray()[0].Value.Value)
+                {
+                    // TODO: Decide wether to send (feeback and request)
+                    case "cidades":
+                        if (e.Result.Confidence < 0.20)
+                        {
+                            t.Speak("Não consegui entender, por favor repita");
+                            return false;
+                        }
+                        else if (e.Result.Confidence >= 0.20 && e.Result.Confidence < 0.60)
+                        {
+                            // obtem informação se é mesmo isto
+                            Console.WriteLine(e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            t.Speak("Não consegui entender, Será que quis procurar a cidade  " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            eventQueue.Enqueue(e);
+                            return false;
+                        }
+                        else if (e.Result.Confidence >= 0.60 && e.Result.Confidence < 0.80)
+                        {
+                            // procura e obtem info
+                            t.Speak("Estou a procura da cidade " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            return true;
+                        }
+                        else
+                        {
+                            return true;
+                        }
 
-                case "Comidas":
-                    //
-                    break;
+                    case "Comidas":
+                        if (e.Result.Confidence < 0.20)
+                        {
+                            t.Speak("Não consegui entender, por favor repita");
+                            return false;
+                        }
+                        else if (e.Result.Confidence >= 0.20 && e.Result.Confidence < 0.60)
+                        {
+                            // obtem informação se é mesmo isto
+                            Console.WriteLine(e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            t.Speak("Não consegui entender, Será que quis procurar por   " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            eventQueue.Enqueue(e);
+                            return false;
+                        }
+                        else if (e.Result.Confidence >= 0.60 && e.Result.Confidence < 0.80)
+                        {
+                            // procura e obtem info
+                            t.Speak("Estou a procura de  " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            return true;
+                        }
+                        else
+                        {
+                            return true;
+                        }
+                        
+                    case "Tipodeestabelecimento":
+                        if (e.Result.Confidence < 0.20)
+                        {
+                            t.Speak("Não consegui entender, por favor repita");
+                            return false;
+                        }
+                        else if (e.Result.Confidence >= 0.20 && e.Result.Confidence < 0.60)
+                        {
+                            // obtem informação se é mesmo isto
+                            Console.WriteLine(e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            t.Speak("Não consegui entender, Será que quis procurar por   " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            eventQueue.Enqueue(e);
+                            return false;
+                        }
+                        else if (e.Result.Confidence >= 0.60 && e.Result.Confidence < 0.80)
+                        {
+                            // procura e obtem info
+                            t.Speak("Estou a procura de  " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            return true;
+                        }
+                        else
+                        {
+                            return true;
+                        }
 
-                case "Tipodeestabelecimento":
-                    //
-                    break;
-                case "Limpar":
-                    //
-                    break;
+                    case "Limpar":
+                        if (e.Result.Confidence < 0.20)
+                        {
+                            t.Speak("Não consegui entender, por favor repita");
+                            return false;
+                        }
+                        else if (e.Result.Confidence >= 0.20 && e.Result.Confidence < 0.60)
+                        {
+                            // obtem informação se é mesmo isto
+                            Console.WriteLine(e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            t.Speak("Não consegui entender, Será que quis limpar os filtros ?");
+                            eventQueue.Enqueue(e);
+                            return false;
+                        }
+                        else if (e.Result.Confidence >= 0.60 && e.Result.Confidence < 0.80)
+                        {
+                            // procura e obtem info
+                            t.Speak("Estou a limpar os filtros ");
+                            return true;
+                        }
+                        else
+                        {
+                            return true;
+                        }
+                        
+                    case "Confirm":
+                        if (e.Result.Semantics.ToArray()[1].Value.Value.ToString().Equals("Sim"))
+                        {
+                            e = eventQueue.Dequeue();
+
+                            t.Speak("Estou a efectuar a acção pedida!!");
+
+                            string json = "{ \"recognized\": [";
+                            foreach (var resultSemantic in e.Result.Semantics)
+                            {
+                                json += "\"" + resultSemantic.Value.Value + "\", ";
+                            }
+                            json = json.Substring(0, json.Length - 2);
+                            json += "] }";
+
+                            var exNot = lce.ExtensionNotification(e.Result.Audio.StartTime + "", e.Result.Audio.StartTime.Add(e.Result.Audio.Duration) + "", e.Result.Confidence, json);
+
+                            mmic.Send(exNot);
+                            return false;
+                        }
+                        else
+                        {
+                            t.Speak("Pesquisa cancelada, por fovor qual é a proxima ação");
+                            eventQueue.Dequeue();
+                            return false;
+                        }
+
+                        
+                }
 
             }
+            else
+            {
+                e = eventQueue.Peek();
+                switch (e.Result.Semantics.ToArray()[0].Value.Value)
+                {
+                    // TODO: Decide wether to send (feeback and request)
+                    case "cidades":
+                        t.Speak("Por favor confirme que quer pesquisar a cidade " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                        break;
+                    case "Comidas":
+                        t.Speak("Por favor confirme que quer pesquisar pelo tipo de comida " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                        break;
+                    case "Tipodeestabelecimento":
+                        t.Speak("Por favor confirme que quer pesquisar pelo tipo de estabelecimento " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                        break;
+                    case "Limpar":
+                        t.Speak("Por favor confirme que quer lempar todos os filtros" );
+                        break;
+                }
 
-            return true;
+
+            }
+           
+            return false;
 
         }
 

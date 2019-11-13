@@ -10,7 +10,15 @@
 
     <rule id="object">
       <one-of>
-        
+        <item>
+          <tag>out.Categoria = "Confirm";</tag>
+          <one-of>
+            <item>
+              <ruleref uri="#Confirm"/>
+              <tag>out.Confirm = rules.Confirm.Confirm;</tag>
+            </item>
+          </one-of>
+        </item>
         <item>
           <tag>out.Categoria = "Limpar";</tag>
           <one-of>
@@ -192,5 +200,39 @@
       </one-of>
     </item>
   </rule>
+
+
+  <rule id="Confirm">
+    <item repeat="1">
+      <one-of>
+        <item>
+          Sim<tag>out.Confirm = "Sim"</tag>
+        </item>
+        <item>
+          Não<tag>out.Confirm = "Não"</tag>
+        </item>
+        <item>
+          Confirmo<tag>out.Confirm = "Sim"</tag>
+        </item>
+        <item>
+          Afirmativo<tag>out.Confirm = "Sim"</tag>
+        </item>
+        <item>
+          Positivo<tag>out.Confirm = "Sim"</tag>
+        </item>
+        <item>
+          Negativo<tag>out.Confirm = "Não"</tag>
+        </item>
+        <item>
+          De Modo Nenhum<tag>out.Confirm = "Não"</tag>
+        </item>
+        <item>
+          Jamais<tag>out.Confirm = "Não"</tag>
+        </item>
+      </one-of>
+    </item>
+  </rule>
+
+
 
 </grammar>
