@@ -165,7 +165,78 @@ namespace AppGui
                     Console.WriteLine(json.recognized[1].ToString());
                     service.clickRestaurant(res,json.recognized[1].ToString());
                     break;
-
+                case "TipodeReserva":
+                    service.ShowReserves(json.recognized[1].ToString());
+                    System.Threading.Thread.Sleep(500);
+                    res = service.getAllRestaurantsFilter();
+                    if (res.Count() > 0)
+                    {
+                        writeToFile2(res);
+                        res.ForEach(Console.WriteLine);
+                    }
+                    break;
+                case "Cozinhasepratos":
+                    service.ShowKitchenTypes(json.recognized[1].ToString());
+                    System.Threading.Thread.Sleep(500);
+                    res = service.getAllRestaurantsFilter();
+                    if (res.Count() > 0)
+                    {
+                        writeToFile2(res);
+                        res.ForEach(Console.WriteLine);
+                    }
+                    break;
+                case "Preco":
+                    service.ShowPrice(json.recognized[1].ToString());
+                    System.Threading.Thread.Sleep(500);
+                    res = service.getAllRestaurantsFilter();
+                    if (res.Count() > 0)
+                    {
+                        writeToFile2(res);
+                        res.ForEach(Console.WriteLine);
+                    }
+                    break;
+                case "Caracteristicasdorestaurante":
+                    service.ShowCharacteristics(json.recognized[1].ToString());
+                    System.Threading.Thread.Sleep(500);
+                    res = service.getAllRestaurantsFilter();
+                    if (res.Count() > 0)
+                    {
+                        writeToFile2(res);
+                        res.ForEach(Console.WriteLine);
+                    }
+                    break;
+                case "Bonspara":
+                    service.ShowGoodFor(json.recognized[1].ToString());
+                    System.Threading.Thread.Sleep(500);
+                    res = service.getAllRestaurantsFilter();
+                    if (res.Count() > 0)
+                    {
+                        writeToFile2(res);
+                        res.ForEach(Console.WriteLine);
+                    }
+                    break;
+                case "Refeicoes":
+                    service.ShowMeals(json.recognized[1].ToString());
+                    System.Threading.Thread.Sleep(500);
+                    res = service.getAllRestaurantsFilter();
+                    if (res.Count() > 0)
+                    {
+                        writeToFile2(res);
+                        res.ForEach(Console.WriteLine);
+                    }
+                    break;
+                case "Restricoesalimentares":
+                    service.ShowRestrictions(json.recognized[1].ToString());
+                    System.Threading.Thread.Sleep(500);
+                    res = service.getAllRestaurantsFilter();
+                    if (res.Count() > 0)
+                    {
+                        writeToFile2(res);
+                        res.ForEach(Console.WriteLine);
+                    }
+                    break;
+                case "Mais":
+                    break;
             }
 
 

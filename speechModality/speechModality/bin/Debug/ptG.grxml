@@ -2,106 +2,161 @@
 <grammar xml:lang="pt-PT" version="1.0" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0" root="rootRule">
   <rule id="rootRule" scope="public">
     <one-of>
-    <item>
-    <ruleref uri="#object"/>
+      <item>
+        <ruleref uri="#object"/>
       </item>
     </one-of>
   </rule>
 
-    <rule id="object">
-      <one-of>
-        <item>
-          <tag>out.Categoria = "Confirm";</tag>
-          <one-of>
-            <item>
-              <ruleref uri="#Confirm"/>
-              <tag>out.Confirm = rules.Confirm.Confirm;</tag>
-            </item>
-          </one-of>
-        </item>
-        <item>
-          <tag>out.Categoria = "Limpar";</tag>
-          <one-of>
-            <item>
-              <ruleref uri="#Limpar"/>
-              <tag>out.Limpar = rules.Limpar.Limpar;</tag>
-            </item>
-          </one-of>
-        </item>
-        <item>
-          <tag>out.Categoria = "cidades";</tag>
-          <one-of>
-            <item>
-              <ruleref uri="#Cidades"/>
-              <tag>out.CidadeUnica = rules.Cidades.Cidades;</tag>
-            </item>
-            <item>
-              <ruleref uri="#VerboEscolherCidadeRestaurante"/>
-              <ruleref uri="#Cidades"/>
-              <tag>out.CidadeUnica = rules.Cidades.Cidades;</tag>
-            </item>
-          </one-of>
-        </item>
-        <item>
-          <tag>out.Categoria = "Comidas";</tag>
-          <one-of>
-            <item>
-              <ruleref uri="#Comidas"/>
-              <tag>out.Comidas = rules.Comidas.Comidas;</tag>
-            </item>
-            <item>
-              <ruleref uri="#VerboEscolherTipoComida"/>
-              <ruleref uri="#Comidas"/>
-              <tag>out.Comidas = rules.Comidas.Comidas;</tag>
-            </item>
-          </one-of>
-        </item>  
-        <item>
-          <tag>out.Categoria = "Tipodeestabelecimento";</tag>
-          <one-of>
-            <item>
-              <ruleref uri="#Tipodeestabelecimento"/>
-              <tag>out.Tipodeestabelecimento = rules.Tipodeestabelecimento.Tipodeestabelecimento;</tag>
-            </item>
-            <item>
-              <ruleref uri="#VerboEscolherTipoComida"/>
-              <ruleref uri="#Tipodeestabelecimento"/>
-              <tag>out.Tipodeestabelecimento = rules.Tipodeestabelecimento.Tipodeestabelecimento;</tag>
-            </item>
-          </one-of>
-        </item>
-       
+  <rule id="object">
+    <one-of>
+      <item>
+        <tag>out.Categoria = "cidades";</tag>
+        <one-of>
+          <item>
+            <ruleref uri="#Cidades"/>
+            <tag>out.CidadeUnica = rules.Cidades.Cidades;</tag>
+          </item>
+          <item>
+            <ruleref uri="#VerboEscolherCidadeRestaurante"/>
+            <ruleref uri="#Cidades"/>
+            <tag>out.CidadeUnica = rules.Cidades.Cidades;</tag>
+          </item>
+        </one-of>
+      </item>
+      <item>
+        <tag>out.Categoria = "Comidas";</tag>
+        <one-of>
+          <item>
+            <ruleref uri="#Comidas"/>
+            <tag>out.Comidas = rules.Comidas.Comidas;</tag>
+          </item>
+          <item>
+            <ruleref uri="#VerboEscolherTipoComida"/>
+            <ruleref uri="#Comidas"/>
+            <tag>out.Comidas = rules.Comidas.Comidas;</tag>
+          </item>
+        </one-of>
+      </item>
+      <item>
+        <tag>out.Categoria = "Cozinhasepratos";</tag>
+        <one-of>
+          <item>
+            <ruleref uri="#Cozinhasepratos"/>
+            <tag>out.Cozinhasepratos = rules.Cozinhasepratos.Cozinhasepratos;</tag>
+          </item>
+          <item>
+            <ruleref uri="#VerboEscolherTipoComida"/>
+            <ruleref uri="#Cozinhasepratos"/>
+            <tag>out.Cozinhasepratos = rules.Cozinhasepratos.Cozinhasepratos;</tag>
+          </item>
+        </one-of>
+      </item>
+      <item>
+        <tag>out.Categoria = "Tipodeestabelecimento";</tag>
+        <one-of>
+          <item>
+            <ruleref uri="#Tipodeestabelecimento"/>
+            <tag>out.Tipodeestabelecimento = rules.Tipodeestabelecimento.Tipodeestabelecimento;</tag>
+          </item>
+          <item>
+            <ruleref uri="#VerboEscolherTipoComida"/>
+            <ruleref uri="#Tipodeestabelecimento"/>
+            <tag>out.Tipodeestabelecimento = rules.Tipodeestabelecimento.Tipodeestabelecimento;</tag>
+          </item>
+        </one-of>
+      </item>
+      <item>
+        <tag>out.Categoria = "TipodeReserva";</tag>
+        <one-of>
+          <item>
+            <ruleref uri="#TipodeReserva"/>
+            <tag>out.TipodeReserva = rules.TipodeReserva.TipodeReserva;</tag>
+          </item>
+        </one-of>
+      </item>
 
-      </one-of>
+      <item>
+        <tag>out.Categoria = "Restricoesalimentares";</tag>
+        <one-of>
+          <item>
+            <ruleref uri="#Restricoesalimentares"/>
+            <tag>out.Restricoesalimentares = rules.Restricoesalimentares.Restricoesalimentares;</tag>
+          </item>
+        </one-of>
+      </item>
+
+      <item>
+        <tag>out.Categoria = "Refeicoes";</tag>
+        <one-of>
+          <item>
+            <ruleref uri="#Refeicoes"/>
+            <tag>out.Refeicoes = rules.Refeicoes.Refeicoes;</tag>
+          </item>
+        </one-of>
+      </item>
+
+      <item>
+        <tag>out.Categoria = "Preco";</tag>
+        <one-of>
+          <item>
+            <ruleref uri="#Preco"/>
+            <tag>out.Preco = rules.Preco.Preco;</tag>
+          </item>
+        </one-of>
+      </item>
+
+      <item>
+        <tag>out.Categoria = "Caracteristicasdorestaurante";</tag>
+        <one-of>
+          <item>
+            <ruleref uri="#Caracteristicasdorestaurante"/>
+            <tag>out.Caracteristicasdorestaurante = rules.Caracteristicasdorestaurante.Caracteristicasdorestaurante;</tag>
+          </item>
+        </one-of>
+      </item>
+
+      <item>
+        <tag>out.Categoria = "Bonspara";</tag>
+        <one-of>
+          <item>
+            <ruleref uri="#Bonspara"/>
+            <tag>out.Bonspara = rules.Bonspara.Bonspara;</tag>
+          </item>
+        </one-of>
+      </item>
+      <item>
+        <tag>out.Categoria = "Confirm";</tag>
+        <one-of>
+          <item>
+            <ruleref uri="#Confirm"/>
+            <tag>out.Confirm = rules.Confirm.Confirm;</tag>
+          </item>
+        </one-of>
+      </item>
+      <item>
+        <tag>out.Categoria = "Limpar";</tag>
+        <one-of>
+          <item>
+            <ruleref uri="#Limpar"/>
+            <tag>out.Limpar = rules.Limpar.Limpar;</tag>
+          </item>
+        </one-of>
+      </item>
+      
+      <item>
+        <tag>out.Categoria = "Mais";</tag>
+        <one-of>
+          <item>
+            <ruleref uri="#Mais"/>
+            <tag>out.Mais = rules.Mais.Mais;</tag>
+          </item>
+        </one-of>
+      </item>
+    </one-of>
   </rule>
 
 
-  <rule id="VerboEscolherCidadeRestaurante">
-    <item repeat="1">
-      <tag>out.VerboEscolherCidadeRestaurante = "VerboEscolherCidadeRestaurante"</tag>
-      <one-of>
-        <item>mostrar</item>
-        <item>mostra-me</item>
-        <item>pesquisa-me</item>
-        <item>quero</item>
-        <item>ver</item>
-        <item>pesquisar</item>
-      </one-of>
-    </item>
-  </rule>
-
- 
-  
-  <rule id="VerboEscolherTipoComida">
-    <item repeat="1">
-      <tag>out.VerboEscolherTipoComida = "VerboEscolherTipoComida"</tag>
-      <one-of>
-        <item>quero</item>
-        <item>escolho</item>
-      </one-of>
-    </item>
-  </rule>
-  
   <rule id="Comidas">
     <item repeat="1">
       <one-of>
@@ -117,7 +172,146 @@
       </one-of>
     </item>
   </rule>
-  
+
+  <rule id="VerboEscolherCidadeRestaurante">
+    <item repeat="1">
+      <tag>out.VerboEscolherCidadeRestaurante = "VerboEscolherCidadeRestaurante"</tag>
+      <one-of>
+        <item>mostrar</item>
+        <item>mostra-me</item>
+        <item>pesquisa-me</item>
+        <item>quero</item>
+        <item>ver</item>
+        <item>pesquisar</item>
+      </one-of>
+    </item>
+  </rule>
+
+  <rule id="VerboEscolherTipoComida">
+    <item repeat="1">
+      <tag>out.VerboEscolherTipoComida = "VerboEscolherTipoComida"</tag>
+      <one-of>
+        <item>quero</item>
+        <item>escolho</item>
+      </one-of>
+    </item>
+  </rule>
+
+  <rule id="Cozinhasepratos">
+    <item repeat="1">
+      <one-of>
+        <item>
+          Americana<tag>out.Cozinhasepratos="Americana"</tag>
+        </item>
+        <item>
+          Árabe<tag>out.Cozinhasepratos="Árabe"</tag>
+        </item>
+        <item>
+          Asiático<tag>out.Cozinhasepratos="Asiático"</tag>
+        </item>
+        <item>
+          Bar de vinhos<tag>out.Cozinhasepratos="Bar de vinhos"</tag>
+        </item>
+        <item>
+          Brasileira<tag>out.Cozinhasepratos="Brasileira"</tag>
+        </item>
+        <item>
+          Britânico<tag>out.Cozinhasepratos="Britânico"</tag>
+        </item>
+        <item>
+          Chinesa<tag>out.Cozinhasepratos="Chinesa"</tag>
+        </item>
+        <item>
+          Churrasco<tag>out.Cozinhasepratos="Churrasco"</tag>
+        </item>
+        <item>
+          Contemporâneo<tag>out.Cozinhasepratos="Contemporâneo"</tag>
+        </item>
+        <item>
+          Diner Americano<tag>out.Cozinhasepratos="Diner Americano"</tag>
+        </item>
+        <item>
+          Espanhol<tag>out.Cozinhasepratos="Espanhol"</tag>
+        </item>
+        <item>
+          Europeia<tag>out.Cozinhasepratos="Europeia"</tag>
+        </item>
+        <item>
+          Fast food<tag>out.Cozinhasepratos="Fast food"</tag>
+        </item>
+        <item>
+          Francesa<tag>out.Cozinhasepratos="Francesa"</tag>
+        </item>
+        <item>
+          Fusão<tag>out.Cozinhasepratos="Fusão"</tag>
+        </item>
+        <item>
+          Grill <tag>out.Cozinhasepratos="Grill"</tag>
+        </item>
+        <item>
+          Indiana <tag>out.Cozinhasepratos="Indiana"</tag>
+        </item>
+        <item>
+          Internacional<tag>out.Cozinhasepratos="Internacional"</tag>
+        </item>
+        <item>
+          Italiana<tag>out.Cozinhasepratos="Italiana"</tag>
+        </item>
+        <item>
+          Japonesa<tag>out.Cozinhasepratos="Japonesa"</tag>
+        </item>
+        <item>
+          Latino<tag>out.Cozinhasepratos="Latino"</tag>
+        </item>
+        <item>
+          Marisco<tag>out.Cozinhasepratos="Marisco"</tag>
+        </item>
+        <item>
+          Mediterrâneo<tag>out.Cozinhasepratos="Mediterrâneo"</tag>
+        </item>
+        <item>
+          Mercearia de luxo<tag>out.Cozinhasepratos="Mercearia de luxo"</tag>
+        </item>
+        <item>
+          Mexicana<tag>out.Cozinhasepratos="Mexicana"</tag>
+        </item>
+        <item>
+          Piza<tag>out.Cozinhasepratos="Piza"</tag>
+        </item>
+        <item>
+          Portuguesa<tag>out.Cozinhasepratos="Portuguesa"</tag>
+        </item>
+        <item>
+          Pub<tag>out.Cozinhasepratos="Pub"</tag>
+        </item>
+        <item>
+          Pub de cerveja artesanal<tag>out.Cozinhasepratos="Pub de cerveja artesanal"</tag>
+        </item>
+        <item>
+          Pub gastronómico <tag>out.Cozinhasepratos="Pub gastronómico"</tag>
+        </item>
+        <item>
+          Saudável<tag>out.Cozinhasepratos="Saudável"</tag>
+        </item>
+        <item>
+          Sopas<tag>out.Cozinhasepratos="Sopas"</tag>
+        </item>
+        <item>
+          Steakhouse <tag>out.Cozinhasepratos="Steakhouse"</tag>
+        </item>
+        <item>
+          Sul Americana<tag>out.Cozinhasepratos="Sul Americana"</tag>
+        </item>
+        <item>
+          Sushi<tag>out.Cozinhasepratos="Sushi"</tag>
+        </item>
+        <item>
+          Venezuelana<tag>out.Cozinhasepratos="Venezuelana"</tag>
+        </item>
+      </one-of>
+    </item>
+  </rule>
+
   <rule id="Tipodeestabelecimento">
     <item repeat="1">
       <one-of>
@@ -138,11 +332,165 @@
         </item>
         <item>
           Bares e pubs<tag>out.Tipodeestabelecimento="Bares e pubs"</tag>
-        </item> 
+        </item>
+        <item>
+          Mercado de gastronomia especializada<tag>out.Tipodeestabelecimento="Mercado de gastronomia especializada"</tag>
+        </item>
       </one-of>
     </item>
   </rule>
-    
+
+  <rule id="TipodeReserva">
+    <item repeat="1">
+      <one-of>
+        <item>
+          Reservas online<tag>out.TipodeReserva="Reservas online"</tag>
+        </item>
+        <item>
+          Promoções de restaurantes<tag>out.TipodeReserva="Promoções de restaurantes"</tag>
+        </item>
+        <item>
+          Disponível esta noite<tag>out.TipodeReserva="Disponível esta noite"</tag>
+        </item>
+      </one-of>
+    </item>
+  </rule>
+
+  <rule id="Restricoesalimentares">
+    <item repeat="1">
+      <one-of>
+        <item>
+          Adequado a vegetarianos<tag>out.Restricoesalimentares="Adequado a vegetarianos"</tag>
+        </item>
+        <item>
+          Opções sem glúten<tag>out.Restricoesalimentares="Opções sem glúten"</tag>
+        </item>
+        <item>
+          Opções vegan<tag>out.Restricoesalimentares="Opções vegan"</tag>
+        </item>
+      </one-of>
+    </item>
+  </rule>
+
+  <rule id="Refeicoes">
+    <item repeat="1">
+      <one-of>
+        <item>
+          Pequeno-almoço<tag>out.Refeicoes="Pequeno-almoço"</tag>
+        </item>
+        <item>
+          Brunch<tag>out.Refeicoes="Brunch"</tag>
+        </item>
+        <item>
+          Almoço<tag>out.Refeicoes="Almoço"</tag>
+        </item>
+        <item>
+          Jantar<tag>out.Refeicoes="Jantar"</tag>
+        </item>
+
+      </one-of>
+    </item>
+  </rule>
+
+  <rule id="Preco">
+    <item repeat="1">
+      <one-of>
+        <item>
+          Refeições baratas<tag>out.Preco="Refeições baratas"</tag>
+        </item>
+        <item>
+          Acessível<tag>out.Preco="Acessível"</tag>
+        </item>
+        <item>
+          Alta gastronomia<tag>out.Preco="Alta gastronomia"</tag>
+        </item>
+      </one-of>
+    </item>
+  </rule>
+
+  <rule id="Caracteristicasdorestaurante">
+    <item repeat="1">
+      <one-of>
+        <item>
+          À beira-mar <tag>out.Caracteristicasdorestaurante="À beira-mar"</tag>
+        </item>
+        <item>
+          Aceita cartão de crédito <tag>out.Caracteristicasdorestaurante="Aceita cartão de crédito"</tag>
+        </item>
+        <item>
+          Acessível a cadeiras de rodas<tag>out.Caracteristicasdorestaurante=" Acessível a cadeiras de rodas"</tag>
+        </item>
+        <item>
+          Buffet <tag>out.Caracteristicasdorestaurante="Buffet"</tag>
+        </item>
+        <item>
+          Comida para levar <tag>out.Caracteristicasdorestaurante="Comida para levar"</tag>
+        </item>
+        <item>
+          Estacionamento disponível<tag>out.Caracteristicasdorestaurante="Estacionamento disponível"</tag>
+        </item>
+        <item>
+          Mesas ao ar livre<tag>out.Caracteristicasdorestaurante="Mesas ao ar livre"</tag>
+        </item>
+        <item>
+          Praia <tag>out.Caracteristicasdorestaurante="Praia"</tag>
+        </item>
+        <item>
+          Refeições em privado <tag>out.Caracteristicasdorestaurante="Refeições em privado"</tag>
+        </item>
+        <item>
+          Reservas<tag>out.Caracteristicasdorestaurante="Reservas"</tag>
+        </item>
+        <item>
+          Serve bebidas alcoólicas<tag>out.Caracteristicasdorestaurante="Serve bebidas alcoólicas"</tag>
+        </item>
+        <item>
+          Serviço de entrega<tag>out.Caracteristicasdorestaurante="Serviço de entrega"</tag>
+        </item>
+        <item>
+          Serviço de mesa<tag>out.Caracteristicasdorestaurante="Serviço de mesa"</tag>
+        </item>
+        <item>
+          Televisão<tag>out.Caracteristicasdorestaurante="Televisão"</tag>
+        </item>
+        <item>
+          Wi-Fi gratuito<tag>out.Caracteristicasdorestaurante="Wi-Fi gratuito"</tag>
+        </item>
+      </one-of>
+    </item>
+  </rule>
+
+  <rule id="Bonspara">
+    <item repeat="1">
+      <one-of>
+        <item>
+          Ambiente de bar<tag>out.Bonspara="Ambiente de bar"</tag>
+        </item>
+        <item>
+          Crianças<tag>out.Bonspara="Crianças"</tag>
+        </item>
+        <item>
+          Famílias com crianças<tag>out.Bonspara="Famílias com crianças"</tag>
+        </item>
+        <item>
+          Gastronomia regional<tag>out.Bonspara="Gastronomia regional"</tag>
+        </item>
+        <item>
+          Grupos grandes<tag>out.Bonspara="Grupos grandes"</tag>
+        </item>
+        <item>
+          Ocasiões especiais<tag>out.Bonspara="Ocasiões especiais"</tag>
+        </item>
+        <item>
+          Reuniões de negócios<tag>out.Bonspara="Reuniões de negócios"</tag>
+        </item>
+        <item>
+          Romântico<tag>out.Bonspara="Romântico"</tag>
+        </item>
+      </one-of>
+    </item>
+  </rule>
+
   <rule id="Cidades">
     <item repeat="1">
       <one-of>
@@ -182,7 +530,7 @@
       </one-of>
     </item>
   </rule>
-  
+
   <rule id="Limpar">
     <item repeat="1">
       <one-of>
@@ -196,11 +544,11 @@
         </item>
         <item>
           Seleção
-          <tag>out.Limpar = "Seleção"</tag></item>
+          <tag>out.Limpar = "Seleção"</tag>
+        </item>
       </one-of>
     </item>
   </rule>
-
 
   <rule id="Confirm">
     <item repeat="1">
@@ -233,6 +581,23 @@
     </item>
   </rule>
 
-
+  <rule id="Mais">
+    <item repeat="1">
+      <one-of>
+        <item>
+          Tipo de estabelecimento<tag>out.Mais="Tipo de estabelecimento"</tag>
+        </item>
+        <item>
+          Características do restaurante<tag>out.Mais="Características do restaurante"</tag>
+        </item>
+        <item>
+          Bons para<tag>out.Mais="Bons para"</tag>
+        </item>
+        <item>
+          Cozinhas e pratos<tag>out.Mais="Cozinhas e pratos"</tag>
+        </item>
+      </one-of>
+    </item>
+  </rule>
 
 </grammar>

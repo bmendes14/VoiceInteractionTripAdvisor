@@ -253,7 +253,200 @@ namespace speechModality
                             return false;
                         }
 
-                        
+                    case "Restaurantes":
+                        if (e.Result.Confidence < 0.20)
+                        {
+                            t.Speak("Não consegui entender, por favor repita");
+                            return false;
+                        }
+                        else if (e.Result.Confidence >= 0.20 && e.Result.Confidence < 0.60)
+                        {
+                            // obtem informação se é mesmo isto
+                            Console.WriteLine(e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            t.Speak("Não consegui entender, Será que quis procurar o restaurante  " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            eventQueue.Enqueue(e);
+                            return false;
+                        }
+                        else if (e.Result.Confidence >= 0.60 && e.Result.Confidence < 0.80)
+                        {
+                            // procura e obtem info
+                            t.Speak("Estou a abrir o restaurante " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            return true;
+                        }
+                        else
+                        {
+                            return true;
+                        }
+                       
+                    case "TipodeReserva":
+                        if (e.Result.Confidence < 0.20)
+                        {
+                            t.Speak("Não consegui entender, por favor repita");
+                            return false;
+                        }
+                        else if (e.Result.Confidence >= 0.20 && e.Result.Confidence < 0.60)
+                        {
+                            // obtem informação se é mesmo isto
+                            Console.WriteLine(e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            t.Speak("Não consegui entender, Será que quis procurar o tipo de reserva  " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            eventQueue.Enqueue(e);
+                            return false;
+                        }
+                        else if (e.Result.Confidence >= 0.60 && e.Result.Confidence < 0.80)
+                        {
+                            // procura e obtem info
+                            t.Speak("Estou a procura do tipo de reserva " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            return true;
+                        }
+                        else
+                        {
+                            return true;
+                        }
+                    case "Cozinhasepratos":
+                        if (e.Result.Confidence < 0.20)
+                        {
+                            t.Speak("Não consegui entender, por favor repita");
+                            return false;
+                        }
+                        else if (e.Result.Confidence >= 0.20 && e.Result.Confidence < 0.60)
+                        {
+                            // obtem informação se é mesmo isto
+                            Console.WriteLine(e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            t.Speak("Não consegui entender, Será que quis procurar o tipo de comida  " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            eventQueue.Enqueue(e);
+                            return false;
+                        }
+                        else if (e.Result.Confidence >= 0.60 && e.Result.Confidence < 0.80)
+                        {
+                            // procura e obtem info
+                            t.Speak("Estou a procura do tipo de comida " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            return true;
+                        }
+                        else
+                        {
+                            return true;
+                        }
+                    case "Preco":
+                        if (e.Result.Confidence < 0.20)
+                        {
+                            t.Speak("Não consegui entender, por favor repita");
+                            return false;
+                        }
+                        else if (e.Result.Confidence >= 0.20 && e.Result.Confidence < 0.60)
+                        {
+                            // obtem informação se é mesmo isto
+                            Console.WriteLine(e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            t.Speak("Não consegui entender, Será que quis procurar o preço " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            eventQueue.Enqueue(e);
+                            return false;
+                        }
+                        else if (e.Result.Confidence >= 0.60 && e.Result.Confidence < 0.80)
+                        {
+                            // procura e obtem info
+                            t.Speak("Estou a procura do preço " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            return true;
+                        }
+                        else
+                        {
+                            return true;
+                        }
+                    case "Caracteristicasdorestaurante":
+                        if (e.Result.Confidence < 0.20)
+                        {
+                            t.Speak("Não consegui entender, por favor repita");
+                            return false;
+                        }
+                        else if (e.Result.Confidence >= 0.20 && e.Result.Confidence < 0.60)
+                        {
+                            // obtem informação se é mesmo isto
+                            Console.WriteLine(e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            t.Speak("Não consegui entender, Será que quis procurar restaurantes com a característica  " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            eventQueue.Enqueue(e);
+                            return false;
+                        }
+                        else if (e.Result.Confidence >= 0.60 && e.Result.Confidence < 0.80)
+                        {
+                            // procura e obtem info
+                            t.Speak("Estou a procura de restaurantes com a característica " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            return true;
+                        }
+                        else
+                        {
+                            return true;
+                        }
+                    case "Bonspara":
+                        if (e.Result.Confidence < 0.20)
+                        {
+                            t.Speak("Não consegui entender, por favor repita");
+                            return false;
+                        }
+                        else if (e.Result.Confidence >= 0.20 && e.Result.Confidence < 0.60)
+                        {
+                            // obtem informação se é mesmo isto
+                            Console.WriteLine(e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            t.Speak("Não consegui entender, Será que quis procurar restaurantes bons para  " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            eventQueue.Enqueue(e);
+                            return false;
+                        }
+                        else if (e.Result.Confidence >= 0.60 && e.Result.Confidence < 0.80)
+                        {
+                            // procura e obtem info
+                            t.Speak("Estou a procurar restaurantes bons para " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            return true;
+                        }
+                        else
+                        {
+                            return true;
+                        }
+                    case "Refeicoes":
+                        if (e.Result.Confidence < 0.20)
+                        {
+                            t.Speak("Não consegui entender, por favor repita");
+                            return false;
+                        }
+                        else if (e.Result.Confidence >= 0.20 && e.Result.Confidence < 0.60)
+                        {
+                            // obtem informação se é mesmo isto
+                            Console.WriteLine(e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            t.Speak("Não consegui entender, Será que quis procurar a refeição  " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            eventQueue.Enqueue(e);
+                            return false;
+                        }
+                        else if (e.Result.Confidence >= 0.60 && e.Result.Confidence < 0.80)
+                        {
+                            // procura e obtem info
+                            t.Speak("Estou à procura da refeição " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            return true;
+                        }
+                        else
+                        {
+                            return true;
+                        }
+                    case "Restricoesalimentares":
+                        if (e.Result.Confidence < 0.20)
+                        {
+                            t.Speak("Não consegui entender, por favor repita");
+                            return false;
+                        }
+                        else if (e.Result.Confidence >= 0.20 && e.Result.Confidence < 0.60)
+                        {
+                            // obtem informação se é mesmo isto
+                            Console.WriteLine(e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            t.Speak("Não consegui entender, Será que quis procurar a restrição alimentar  " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            eventQueue.Enqueue(e);
+                            return false;
+                        }
+                        else if (e.Result.Confidence >= 0.60 && e.Result.Confidence < 0.80)
+                        {
+                            // procura e obtem info
+                            t.Speak("Estou a procura da restrição alimentar " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            return true;
+                        }
+                        else
+                        {
+                            return true;
+                        }
+
                 }
 
             }
@@ -273,13 +466,41 @@ namespace speechModality
                         t.Speak("Por favor confirme que quer pesquisar pelo tipo de estabelecimento " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
                         break;
                     case "Limpar":
-                        t.Speak("Por favor confirme que quer lempar todos os filtros" );
+                        t.Speak("Por favor confirme que quer lempar todos os filtros");
                         break;
+                    case "Restaurantes":
+                        t.Speak("Por favor confirme que quer pesquisar pelo Restaurante " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                        break;
+                    case "TipodeReserva":
+                        t.Speak("Por favor confirme que quer pesquisar pelo tipo de reserva " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                        break;
+                    case "Cozinhasepratos":
+                        t.Speak("Por favor confirme que quer pesquisar pelo tipo de cozinha " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                        break;
+                    case "Preco":
+                        t.Speak("Por favor confirme que quer pesquisar pelo tipo de preço " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                        break;
+                    case "Caracteristicasdorestaurante":
+                        t.Speak("Por favor confirme que quer pesquisar pela seguinte caracteristica do restaurante " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                        break;
+                    case "Bonspara":
+                        t.Speak("Por favor confirme se o restaurante que quer é bom para " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                        break;
+                    case "Refeicoes":
+                        t.Speak("A refeição que prefere é " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                        break;
+                    case "Restricoesalimentares":
+                        t.Speak("A sua restrição é  " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                        break;
+                    case "Mais":
+                        t.Speak("Quer ver mais informação sobre " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                        break;
+
                 }
 
 
             }
-           
+
             return false;
 
         }

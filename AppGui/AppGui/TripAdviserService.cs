@@ -31,6 +31,159 @@ namespace AppGui
            
         }
 
+        //Reserves
+
+        public void ShowReserves(String reserveType)
+        {
+            try
+            {
+             driver.FindElement(By.XPath("//div[@class='label filterName' and  contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '" + reserveType.ToLower() + "')]")).Click();
+            }// when a method call is invalid for the object's current state.
+            catch (InvalidOperationException e)
+            {
+                return;
+            }// indicate that the element being requested does not exist.
+            catch (NoSuchElementException e)
+            {
+                return;
+            }
+        }
+
+        //Kitchen types
+
+        public void ShowKitchenTypes(String kitchenType)
+        {
+            try
+            {
+                driver.FindElement(By.XPath("//*[@id=\"jfy_filter_bar_cuisine\"]/div[4]/div[79]")).Click();
+                System.Threading.Thread.Sleep(50);
+                driver.FindElement(By.XPath("//div[@title='"+kitchenType+"']")).Click();
+                System.Threading.Thread.Sleep(500);
+                driver.FindElement(By.XPath("//*[@id=\"overlayInnerDiv\"]/div[2]/div[4]/div[2]")).Click();
+                
+
+            }// when a method call is invalid for the object's current state.
+            catch (InvalidOperationException e)
+            {
+                return;
+            }// indicate that the element being requested does not exist.
+            catch (NoSuchElementException e)
+            {
+                return;
+            }
+        }
+
+        //PRICE
+
+        public void ShowPrice(String price)
+        {
+            try
+            {
+                driver.FindElement(By.XPath("//div[@class='label filterName' and  contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '" + price.ToLower() + "')]")).Click();
+
+
+            }// when a method call is invalid for the object's current state.
+            catch (InvalidOperationException e)
+            {
+                return;
+            }// indicate that the element being requested does not exist.
+            catch (NoSuchElementException e)
+            {
+                return;
+            }
+        }
+
+        //Characteristics
+
+        public void ShowCharacteristics(String charact)
+        {
+            try
+            {
+                driver.FindElement(By.XPath("//*[@id=\"jfy_filter_bar_diningOptions\"]/div[2]/div[16]")).Click();
+                System.Threading.Thread.Sleep(1000);
+                driver.FindElement(By.XPath("//div[@title = '" + charact + "']")).Click();
+                System.Threading.Thread.Sleep(500);
+                driver.FindElement(By.XPath("//*[@id=\"overlayInnerDiv\"]/div[2]/div[2]/div[2]")).Click();
+                
+
+            }// when a method call is invalid for the object's current state.
+            catch (InvalidOperationException e)
+            {
+                return;
+            }// indicate that the element being requested does not exist.
+            catch (NoSuchElementException e)
+            {
+                return;
+            }
+        }
+
+        //Good For
+
+        public void ShowGoodFor(String good)
+        {
+            try
+            {
+                driver.FindElement(By.XPath("//*[@id=\"jfy_filter_bar_restaurantStyles\"]/div[2]/div[9]")).Click();
+                System.Threading.Thread.Sleep(1000);
+                driver.FindElement(By.XPath("//div[@title = '" + good + "']")).Click();
+                System.Threading.Thread.Sleep(500);
+                driver.FindElement(By.XPath("//*[@id=\"overlayInnerDiv\"]/div[2]/div[2]/div[2]")).Click();
+
+
+            }// when a method call is invalid for the object's current state.
+            catch (InvalidOperationException e)
+            {
+                return;
+            }// indicate that the element being requested does not exist.
+            catch (NoSuchElementException e)
+            {
+                return;
+            }
+        }
+
+        //Meals
+
+        public void ShowMeals(String meal)
+        {
+            try
+            {
+                driver.FindElement(By.XPath("//div[@class='label filterName' and  contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '" + meal.ToLower() + "')]")).Click();
+
+
+            }// when a method call is invalid for the object's current state.
+            catch (InvalidOperationException e)
+            {
+                return;
+            }// indicate that the element being requested does not exist.
+            catch (NoSuchElementException e)
+            {
+                return;
+            }
+        }
+
+
+        //Restrictions
+
+
+        public void ShowRestrictions(String rest)
+        {
+            try
+            {
+                driver.FindElement(By.XPath("//div[@class='label filterName' and  contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '" + rest.ToLower() + "')]")).Click();
+
+
+            }// when a method call is invalid for the object's current state.
+            catch (InvalidOperationException e)
+            {
+                return;
+            }// indicate that the element being requested does not exist.
+            catch (NoSuchElementException e)
+            {
+                return;
+            }
+        }
+
+
         public List<String> getAllRestaurantsMain()
         {
             List<String> all;
@@ -239,10 +392,11 @@ namespace AppGui
         public void ShowEstablishment(String establishment)
         {
             try
-            {
+            {    
+                driver.FindElement(By.XPath("//*[@id=\"jfy_filter_bar_establishmentTypeFilters\"]/div[2]/div[7]")).Click();
+                System.Threading.Thread.Sleep(500);
                 driver.FindElement(By.XPath("//a[@onclick='event.preventDefault();' and  contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '" + establishment.ToLower() + "')]")).Click();
-
-
+                    
             }// when a method call is invalid for the object's current state.
             catch (InvalidOperationException e)
             {
