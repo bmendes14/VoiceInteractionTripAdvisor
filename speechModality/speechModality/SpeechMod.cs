@@ -58,7 +58,12 @@ namespace speechModality
 
             fileSystemWatcher.Changed += FileSystemWatcher_Changed;
 
-            fileSystemWatcher.Path = @"C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\speechModality\speechModality\";
+            
+
+           
+
+            fileSystemWatcher.Path = Environment.CurrentDirectory + @"\..\..";
+            
             fileSystemWatcher.EnableRaisingEvents = true;
         }
 
@@ -89,8 +94,9 @@ namespace speechModality
 
         private  void FileSystemWatcher_Changed(object sender, FileSystemEventArgs e)
         {
+            Console.WriteLine("Pahthhhh ");
             GrammarBuilder builder = new GrammarBuilder();
-            builder.AppendRuleReference(@"C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\speechModality\speechModality\Restaurants.grxml", "main");
+            builder.AppendRuleReference(Environment.CurrentDirectory + @"\..\..\Restaurants.grxml", "main");
 
            
             toLoad = new Grammar(builder);

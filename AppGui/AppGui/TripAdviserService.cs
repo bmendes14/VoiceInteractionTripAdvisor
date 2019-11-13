@@ -89,10 +89,23 @@ namespace AppGui
                     try
                     {
                         string[] words = temp.Split('.');
-                        Console.WriteLine("------------" + words[1] + " ----------" + name + " ----" + words[1].CompareTo(name));
                         if (words[1].TrimStart().CompareTo(name) == 0) 
                         {
-                            driver.FindElement(By.XPath("//a[@class='restaurants-list-ListCell__restaurantName--2aSdo' and contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'),'" + name.ToLower() + "')]")).Click();
+                            if(FindElementIfExists(driver, (By.XPath("//a[@class='restaurants-list-ListCell__restaurantName--2aSdo' and contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'),'" + name.ToLower() + "')]"))) != null)
+                            {
+                                IWebElement link = (driver.FindElement(By.XPath("//a[@class='restaurants-list-ListCell__restaurantName--2aSdo' and contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'),'" + name.ToLower() + "')]")));
+                                String href = link.GetAttribute("href");
+                                driver.Navigate().GoToUrl("https://www.tripadvisor.pt/" + href);
+
+                            }
+                            else
+                            {
+                                IWebElement link = (driver.FindElement(By.XPath("//a[@class='poiTitle' and contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'),'" + name.ToLower() + "')]")));
+                                String href = link.GetAttribute("href");
+                                driver.Navigate().GoToUrl("https://www.tripadvisor.pt/" + href);
+
+                            }
+
                         }
                     }
                     catch (Exception e)
@@ -102,7 +115,20 @@ namespace AppGui
 
                         if (temp.CompareTo(name) == 0)
                         {
-                            driver.FindElement(By.XPath("//a[@class='restaurants-list-ListCell__restaurantName--2aSdo' and contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'),'" + name.ToLower() + "')]")).Click();
+                            if (FindElementIfExists(driver, (By.XPath("//a[@class='restaurants-list-ListCell__restaurantName--2aSdo' and contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'),'" + name.ToLower() + "')]"))) != null)
+                            {
+                                IWebElement link = (driver.FindElement(By.XPath("//a[@class='restaurants-list-ListCell__restaurantName--2aSdo' and contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'),'" + name.ToLower() + "')]")));
+                                String href = link.GetAttribute("href");
+                                driver.Navigate().GoToUrl("https://www.tripadvisor.pt/" + href);
+
+                            }
+                            else
+                            {
+                                IWebElement link = (driver.FindElement(By.XPath("//a[@class='poiTitle' and contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'),'" + name.ToLower() + "')]")));
+                                String href = link.GetAttribute("href");
+                                driver.Navigate().GoToUrl("https://www.tripadvisor.pt/" + href);
+
+                            }
                         }
                     }
                 }

@@ -51,7 +51,11 @@ namespace AppGui
             }
             outRes += "</one-of></item></rule></grammar>";
             Console.WriteLine("Writing to file 2");
-            using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\speechModality\speechModality\Restaurants.grxml"))
+
+            
+           
+
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter((Environment.CurrentDirectory + @"\..\..\..\..\speechModality\speechModality\Restaurants.grxml")))
             {
                 file.WriteLine(outRes);
             }
@@ -89,7 +93,7 @@ namespace AppGui
             }
             outRes += "</one-of></item></rule></grammar>";
             Console.WriteLine("Writing to file 2");
-            using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Fausto\Documents\IM\Project\VoiceInteractionTripAdvisor\speechModality\speechModality\Restaurants.grxml"))
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(Environment.CurrentDirectory + @"\..\..\..\..\speechModality\speechModality\Restaurants.grxml"))
             {
                 file.WriteLine(outRes);
             }
