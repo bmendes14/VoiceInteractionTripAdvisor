@@ -73,6 +73,9 @@
       <tag>out.VerboEscolherCidadeRestaurante = "VerboEscolherCidadeRestaurante"</tag>
       <one-of>
         <item>mostrar</item>
+        <item>mostra-me</item>
+        <item>pesquisa-me</item>
+        <item>quero</item>
         <item>ver</item>
         <item>pesquisar</item>
       </one-of>

@@ -82,15 +82,31 @@ namespace AppGui
         {
             foreach(String item in res)
             {
-                Regex reg = new Regex("[*'\",_&#^@]");
-                string temp = reg.Replace(item, " ");
-                Console.WriteLine(temp);
-                    Console.WriteLine(item);
-                Console.WriteLine(temp.CompareTo(name));
-                if (temp.CompareTo(name)==0)
+                if (item != String.Empty)
                 {
-                    driver.FindElement(By.XPath("//a[@class='restaurants-list-ListCell__restaurantName--2aSdo' and contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'),'" + name.ToLower() + "')]")).Click();
+                    Regex reg = new Regex("[*'\",_&#^@]");
+                    string temp = reg.Replace(item, " ");
+                    try
+                    {
+                        string[] words = temp.Split('.');
+                        Console.WriteLine("------------" + words[1] + " ----------" + name + " ----" + words[1].CompareTo(name));
+                        if (words[1].TrimStart().CompareTo(name) == 0) 
+                        {
+                            driver.FindElement(By.XPath("//a[@class='restaurants-list-ListCell__restaurantName--2aSdo' and contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'),'" + name.ToLower() + "')]")).Click();
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.ToString());
+                        Console.WriteLine("Could not split string");
+
+                        if (temp.CompareTo(name) == 0)
+                        {
+                            driver.FindElement(By.XPath("//a[@class='restaurants-list-ListCell__restaurantName--2aSdo' and contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'),'" + name.ToLower() + "')]")).Click();
+                        }
+                    }
                 }
+
             }
 
         }

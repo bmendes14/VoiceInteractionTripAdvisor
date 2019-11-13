@@ -19,6 +19,7 @@ namespace AppGui
     {
         TripAdviserService service;
         private MmiCommunication mmiC;
+        private List<String> res = new List<string>();
         public MainWindow()
         {
 
@@ -104,7 +105,7 @@ namespace AppGui
             dynamic json = JsonConvert.DeserializeObject(com);
 
 
-            List<String> res = new List<string>();
+            
             switch (json.recognized[0].ToString())
             {
                 
@@ -156,6 +157,8 @@ namespace AppGui
                     break;
                 case "Restaurantes":
                     Console.WriteLine("Restaurante detected");
+                    res.ForEach(Console.WriteLine);
+                    Console.WriteLine(json.recognized[1].ToString());
                     service.clickRestaurant(res,json.recognized[1].ToString());
                     break;
 
