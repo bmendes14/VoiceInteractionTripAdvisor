@@ -52,6 +52,8 @@ namespace speechModality
             sre = new SpeechRecognitionEngine(new System.Globalization.CultureInfo("pt-PT"));
             gr = new Grammar(Environment.CurrentDirectory + "\\ptG.grxml", "rootRule");
             sre.LoadGrammar(gr);
+            Grammar rt = new Grammar(Environment.CurrentDirectory + @"\..\..\Restaurants.grxml", "main");
+            sre.LoadGrammar(rt);
             grammarLoaded = false;
 
             
