@@ -31,7 +31,73 @@ namespace AppGui
            
         }
 
-        //Reserves
+  
+
+
+        public void openMoreType()
+            //DONE
+        {
+            try
+            {
+                driver.FindElement(By.XPath("//div[@onclick=\"ta.restaurant_filter.expandVFilters(this); ta.restaurant_list_tracking.clickMoreFilters();\"]")).Click();
+            }// when a method call is invalid for the object's current state.
+            catch (InvalidOperationException e)
+            {
+                return;
+            }// indicate that the element being requested does not exist.
+            catch (NoSuchElementException e)
+            {
+                return;
+            }
+        }
+
+        public void openMoreCharact()
+        {//done
+            try
+            {
+                driver.FindElement(By.XPath("//div[@onclick=\"ta.restaurant_list_tracking.clickMoreFilters(); (ta.prwidgets.getjs(this,'handlers')).openOverlay('diningOptions');\"]")).Click();
+            }// when a method call is invalid for the object's current state.
+            catch (InvalidOperationException e)
+            {
+                return;
+            }// indicate that the element being requested does not exist.
+            catch (NoSuchElementException e)
+            {
+                return;
+            }
+        }
+
+        public void openGoodFor()
+        {
+            try
+            {
+                driver.FindElement(By.XPath("//div[@onclick=\"ta.restaurant_list_tracking.clickMoreFilters(); (ta.prwidgets.getjs(this,'handlers')).openOverlay('restaurantStyles');\"]")).Click();
+            }// when a method call is invalid for the object's current state.
+            catch (InvalidOperationException e)
+            {
+                return;
+            }// indicate that the element being requested does not exist.
+            catch (NoSuchElementException e)
+            {
+                return;
+            }
+        }
+
+        public void openKitchenDishes()
+        {//DONE
+            try
+            {
+                driver.FindElement(By.XPath("//div[@onclick=\"ta.restaurant_list_tracking.clickMoreFilters(); (ta.prwidgets.getjs(this,'handlers')).openOverlay('cuisine');\"]")).Click();
+            }// when a method call is invalid for the object's current state.
+            catch (InvalidOperationException e)
+            {
+                return;
+            }// indicate that the element being requested does not exist.
+            catch (NoSuchElementException e)
+            {
+                return;
+            }
+        }
 
         public void ShowReserves(String reserveType)
         {
@@ -55,12 +121,10 @@ namespace AppGui
         {
             try
             {
-                driver.FindElement(By.XPath("//*[@id=\"jfy_filter_bar_cuisine\"]/div[4]/div[79]")).Click();
-                System.Threading.Thread.Sleep(50);
                 driver.FindElement(By.XPath("//div[@title='"+kitchenType+"']")).Click();
-                System.Threading.Thread.Sleep(500);
-                driver.FindElement(By.XPath("//*[@id=\"overlayInnerDiv\"]/div[2]/div[4]/div[2]")).Click();
-                
+                System.Threading.Thread.Sleep(1000);
+                driver.FindElement(By.XPath("//div[@class=\"applyButton ui_button primary\"]")).Click();
+
 
             }// when a method call is invalid for the object's current state.
             catch (InvalidOperationException e)
@@ -99,12 +163,10 @@ namespace AppGui
         {
             try
             {
-                driver.FindElement(By.XPath("//*[@id=\"jfy_filter_bar_diningOptions\"]/div[2]/div[16]")).Click();
-                System.Threading.Thread.Sleep(1000);
                 driver.FindElement(By.XPath("//div[@title = '" + charact + "']")).Click();
-                System.Threading.Thread.Sleep(500);
-                driver.FindElement(By.XPath("//*[@id=\"overlayInnerDiv\"]/div[2]/div[2]/div[2]")).Click();
-                
+                System.Threading.Thread.Sleep(1000);
+                driver.FindElement(By.XPath("//div[@class=\"applyButton ui_button primary\"]")).Click();
+
 
             }// when a method call is invalid for the object's current state.
             catch (InvalidOperationException e)
@@ -123,11 +185,9 @@ namespace AppGui
         {
             try
             {
-                driver.FindElement(By.XPath("//*[@id=\"jfy_filter_bar_restaurantStyles\"]/div[2]/div[9]")).Click();
-                System.Threading.Thread.Sleep(1000);
                 driver.FindElement(By.XPath("//div[@title = '" + good + "']")).Click();
-                System.Threading.Thread.Sleep(500);
-                driver.FindElement(By.XPath("//*[@id=\"overlayInnerDiv\"]/div[2]/div[2]/div[2]")).Click();
+                System.Threading.Thread.Sleep(1000);
+                driver.FindElement(By.XPath("//div[@class=\"applyButton ui_button primary\"]")).Click();
 
 
             }// when a method call is invalid for the object's current state.
@@ -393,8 +453,7 @@ namespace AppGui
         {
             try
             {    
-                driver.FindElement(By.XPath("//*[@id=\"jfy_filter_bar_establishmentTypeFilters\"]/div[2]/div[7]")).Click();
-                System.Threading.Thread.Sleep(500);
+                System.Threading.Thread.Sleep(1000);
                 driver.FindElement(By.XPath("//a[@onclick='event.preventDefault();' and  contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '" + establishment.ToLower() + "')]")).Click();
                     
             }// when a method call is invalid for the object's current state.

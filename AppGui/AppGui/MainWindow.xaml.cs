@@ -35,7 +35,7 @@ namespace AppGui
         private void writeToFile(List<String> res)
         {
 
-            string outRes = "<?xml version=\"1.0\"?><grammar xml:lang =\"pt-PT\" version =\"1.0\" xmlns =\"http://www.w3.org/2001/06/grammar\" tag-format =\"semantics/1.0\" ><rule id=\"main\" scope=\"public\"><one-of><item><ruleref uri=\"#rest\"/></item></one-of></rule><rule id=\"rest\"><one-of><item><tag>out.Restau = \"Restaurantes\";</tag><one-of><item><ruleref uri=\"#Restaurantes\"/><tag>out.Restaurant = rules.Restaurantes.Restaurantes;</tag></item></one-of></item></one-of></rule>";
+            string outRes = "<?xml version=\"1.0\"?><grammar xml:lang =\"pt-PT\" version =\"1.0\" xmlns =\"http://www.w3.org/2001/06/grammar\" tag-format =\"semantics/1.0\" ><rule id=\"main\" scope=\"public\"><one-of><item><ruleref uri=\"#rest\"/></item></one-of></rule><rule id=\"rest\"><one-of><item><tag>out.Restau = \"Restaurantes\";</tag><one-of><item><ruleref uri=\"#Restaurantes\"/><tag>out.Restaurant = rules.Restaurantes.Restaurantes;</tag></item><item><one-of><item><ruleref uri=\"ptG.grxml#VerboEscolher\"/><ruleref uri=\"#Restaurantes\"/><tag>out.Restaurantes = rules.Restaurantes.Restaurantes;</tag></item><item><ruleref uri=\"ptG.grxml#VerboEscolher\"/><ruleref uri=\"ptG.grxml#VerboEscolher\"/><ruleref uri=\"#Restaurantes\"/><tag>out.Restaurantes = rules.Restaurantes.Restaurantes;</tag></item><item> <ruleref uri=\"ptG.grxml#VerboEscolher\"/><ruleref uri=\"ptG.grxml#VerboEscolher\"/><ruleref uri=\"#Restaurantes\"/><tag>out.Restaurantes = rules.Restaurantes.Restaurantes;</tag></item><item><ruleref uri=\"ptG.grxml#VerboEscolher\"/><ruleref uri=\"#Restaurantes\"/> <tag>out.Restaurantes = rules.Restaurantes.Restaurantes;</tag></item><item><ruleref uri=\"ptG.grxml#VerboEscolher\"/><ruleref uri=\"#Restaurantes\"/><tag>out.Restaurantes = rules.Restaurantes.Restaurantes;</tag></item></one-of></item></one-of></item></one-of></rule>";
             outRes += "<rule id=\"Restaurantes\"><item repeat=\"1\"><one-of> ";
 
             foreach (String item in res)
@@ -65,7 +65,7 @@ namespace AppGui
         private void writeToFile2(List<String> res)
         {
 
-            string outRes = "<?xml version=\"1.0\"?><grammar xml:lang =\"pt-PT\" version =\"1.0\" xmlns =\"http://www.w3.org/2001/06/grammar\" tag-format =\"semantics/1.0\" ><rule id=\"main\" scope=\"public\"><one-of><item><ruleref uri=\"#rest\"/></item></one-of></rule><rule id=\"rest\"><one-of><item><tag>out.Restau = \"Restaurantes\";</tag><one-of><item><ruleref uri=\"#Restaurantes\"/><tag>out.Restaurant = rules.Restaurantes.Restaurantes;</tag></item></one-of></item></one-of></rule>";
+            string outRes = "<?xml version=\"1.0\"?><grammar xml:lang =\"pt-PT\" version =\"1.0\" xmlns =\"http://www.w3.org/2001/06/grammar\" tag-format =\"semantics/1.0\" ><rule id=\"main\" scope=\"public\"><one-of><item><ruleref uri=\"#rest\"/></item></one-of></rule><rule id=\"rest\"><one-of><item><tag>out.Restau = \"Restaurantes\";</tag><one-of><item><ruleref uri=\"#Restaurantes\"/><tag>out.Restaurant = rules.Restaurantes.Restaurantes;</tag></item><item><one-of><item><ruleref uri=\"ptG.grxml#VerboEscolher\"/><ruleref uri=\"#Restaurantes\"/><tag>out.Restaurantes = rules.Restaurantes.Restaurantes;</tag></item><item><ruleref uri=\"ptG.grxml#VerboEscolher\"/><ruleref uri=\"ptG.grxml#VerboEscolher\"/><ruleref uri=\"#Restaurantes\"/><tag>out.Restaurantes = rules.Restaurantes.Restaurantes;</tag></item><item> <ruleref uri=\"ptG.grxml#VerboEscolher\"/><ruleref uri=\"ptG.grxml#VerboEscolher\"/><ruleref uri=\"#Restaurantes\"/><tag>out.Restaurantes = rules.Restaurantes.Restaurantes;</tag></item><item><ruleref uri=\"ptG.grxml#VerboEscolher\"/><ruleref uri=\"#Restaurantes\"/> <tag>out.Restaurantes = rules.Restaurantes.Restaurantes;</tag></item><item><ruleref uri=\"ptG.grxml#VerboEscolher\"/><ruleref uri=\"#Restaurantes\"/><tag>out.Restaurantes = rules.Restaurantes.Restaurantes;</tag></item></one-of></item></one-of></item></one-of></rule>";
             outRes += "<rule id=\"Restaurantes\"><item repeat=\"1\"><one-of> ";
 
             foreach (String item in res)
@@ -236,7 +236,26 @@ namespace AppGui
                     }
                     break;
                 case "Mais":
+                    switch (json.recognized[1].ToString())
+                    {
+                        case "Tipo de estabelecimento":
+                            service.openMoreType();
+                            break;
+                        case "Características do restaurante":
+                            service.openMoreCharact();
+                            break;
+                        case "Bons para":
+                            service.openGoodFor();
+                            break;
+                        case "Cozinhas e pratos":
+                            service.openKitchenDishes();
+                            break;
+                    }
+                        
+
+               
                     break;
+
             }
 
 

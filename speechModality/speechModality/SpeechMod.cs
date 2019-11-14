@@ -52,8 +52,8 @@ namespace speechModality
             sre = new SpeechRecognitionEngine(new System.Globalization.CultureInfo("pt-PT"));
             gr = new Grammar(Environment.CurrentDirectory + "\\ptG.grxml", "rootRule");
             sre.LoadGrammar(gr);
-            Grammar rt = new Grammar(Environment.CurrentDirectory + @"\..\..\Restaurants.grxml", "main");
-            sre.LoadGrammar(rt);
+            //Grammar rt = new Grammar(Environment.CurrentDirectory + @"\..\..\Restaurants.grxml", "main");
+            //sre.LoadGrammar(rt);
             grammarLoaded = false;
 
             
@@ -448,6 +448,30 @@ namespace speechModality
                         {
                             return true;
                         }
+                    case "Mais":
+                        if (e.Result.Confidence < 0.20)
+                        {
+                            t.Speak("Não consegui entender, por favor repita");
+                            return false;
+                        }
+                        else if (e.Result.Confidence >= 0.20 && e.Result.Confidence < 0.60)
+                        {
+                            // obtem informação se é mesmo isto
+                            Console.WriteLine(e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            t.Speak("Não consegui entender, Será que quis ver mais sobre  " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            eventQueue.Enqueue(e);
+                            return false;
+                        }
+                        else if (e.Result.Confidence >= 0.60 && e.Result.Confidence < 0.80)
+                        {
+                            // procura e obtem info
+                            t.Speak("Estou a ver mais " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                            return true;
+                        }
+                        else
+                        {
+                            return true;
+                        }
 
                 }
 
@@ -459,43 +483,43 @@ namespace speechModality
                 {
                     // TODO: Decide wether to send (feeback and request)
                     case "cidades":
-                        t.Speak("Por favor confirme que quer pesquisar a cidade " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                        t.Speak("Por favor confirme que quer pesquisar a cidade " + e.Result.Semantics.ToArray()[1].Value.Value.ToString() + " . Responda sim ou não");
                         break;
                     case "Comidas":
-                        t.Speak("Por favor confirme que quer pesquisar pelo tipo de comida " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                        t.Speak("Por favor confirme que quer pesquisar pelo tipo de comida " + e.Result.Semantics.ToArray()[1].Value.Value.ToString() + " . Responda sim ou não");
                         break;
                     case "Tipodeestabelecimento":
-                        t.Speak("Por favor confirme que quer pesquisar pelo tipo de estabelecimento " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                        t.Speak("Por favor confirme que quer pesquisar pelo tipo de estabelecimento " + e.Result.Semantics.ToArray()[1].Value.Value.ToString() + " . Responda sim ou não");
                         break;
                     case "Limpar":
-                        t.Speak("Por favor confirme que quer lempar todos os filtros");
+                        t.Speak("Por favor confirme que quer lempar todos os filtros. Responda sim ou não");
                         break;
                     case "Restaurantes":
-                        t.Speak("Por favor confirme que quer pesquisar pelo Restaurante " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                        t.Speak("Por favor confirme que quer pesquisar pelo Restaurante " + e.Result.Semantics.ToArray()[1].Value.Value.ToString() + " . Responda sim ou não");
                         break;
                     case "TipodeReserva":
-                        t.Speak("Por favor confirme que quer pesquisar pelo tipo de reserva " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                        t.Speak("Por favor confirme que quer pesquisar pelo tipo de reserva " + e.Result.Semantics.ToArray()[1].Value.Value.ToString() + " . Responda sim ou não");
                         break;
                     case "Cozinhasepratos":
-                        t.Speak("Por favor confirme que quer pesquisar pelo tipo de cozinha " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                        t.Speak("Por favor confirme que quer pesquisar pelo tipo de cozinha " + e.Result.Semantics.ToArray()[1].Value.Value.ToString() + " . Responda sim ou não");
                         break;
                     case "Preco":
-                        t.Speak("Por favor confirme que quer pesquisar pelo tipo de preço " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                        t.Speak("Por favor confirme que quer pesquisar pelo tipo de preço " + e.Result.Semantics.ToArray()[1].Value.Value.ToString() + " . Responda sim ou não");
                         break;
                     case "Caracteristicasdorestaurante":
-                        t.Speak("Por favor confirme que quer pesquisar pela seguinte caracteristica do restaurante " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                        t.Speak("Por favor confirme que quer pesquisar pela seguinte caracteristica do restaurante " + e.Result.Semantics.ToArray()[1].Value.Value.ToString() + " . Responda sim ou não");
                         break;
                     case "Bonspara":
-                        t.Speak("Por favor confirme se o restaurante que quer é bom para " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                        t.Speak("Por favor confirme se o restaurante que quer é bom para " + e.Result.Semantics.ToArray()[1].Value.Value.ToString() + " . Responda sim ou não");
                         break;
                     case "Refeicoes":
-                        t.Speak("A refeição que prefere é " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                        t.Speak("A refeição que prefere é " + e.Result.Semantics.ToArray()[1].Value.Value.ToString() + " . Responda sim ou não");
                         break;
                     case "Restricoesalimentares":
-                        t.Speak("A sua restrição é  " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                        t.Speak("A sua restrição é  " + e.Result.Semantics.ToArray()[1].Value.Value.ToString() + " . Responda sim ou não");
                         break;
                     case "Mais":
-                        t.Speak("Quer ver mais informação sobre " + e.Result.Semantics.ToArray()[1].Value.Value.ToString());
+                        t.Speak("Quer ver mais informação sobre " + e.Result.Semantics.ToArray()[1].Value.Value.ToString() + " . Responda sim ou não");
                         break;
 
                 }
