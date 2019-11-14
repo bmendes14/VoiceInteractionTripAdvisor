@@ -14,7 +14,6 @@ namespace speechModality
 {
     class Tts
     {
-        Boolean finished = false;
         SpeechSynthesizer tts = null;
         static SoundPlayer player = new SoundPlayer();
 
@@ -86,9 +85,9 @@ namespace speechModality
 
 
             //set voice
-            tts.SelectVoiceByHints(VoiceGender.Female, VoiceAge.NotSet, 0, new System.Globalization.CultureInfo("pt-PT"));
+            tts.SelectVoiceByHints(VoiceGender.Male, VoiceAge.NotSet, 0, new System.Globalization.CultureInfo("pt-PT"));
 
-            //tts.SelectVoice("Microsoft Server Speech Text to Speech Voice (pt-PT, Nuno PTTS)");
+            //tts.SelectVoice("...")
 
 
             //set function to play audio after synthesis is complete
@@ -96,6 +95,7 @@ namespace speechModality
 
 
         }
+
         /*
          * Speak
          * 
@@ -112,7 +112,6 @@ namespace speechModality
             player.Stream = new System.IO.MemoryStream();
             tts.SetOutputToWaveStream(player.Stream);
             tts.SpeakAsync(text);
-
         }
 
         public void Speak(string text, int rate)
@@ -125,11 +124,11 @@ namespace speechModality
                 Console.WriteLine("Waiting...");
             }
 
+
             //create audio stream with speech
             player.Stream = new System.IO.MemoryStream();
             tts.SetOutputToWaveStream(player.Stream);
             tts.Rate = rate;
-
             // tts.SpeakAsync(text);
 
 
@@ -137,49 +136,21 @@ namespace speechModality
 
             tts.SpeakSsmlAsync(text);
 
-
-
-
             Console.WriteLine("done  SpeakSsmlAsync().\n");
+
         }
 
         /*
          * tts_SpeakCompleted
          */
-
-        public Boolean tts_Completed()
-        {
-            if (player.Stream != null)
-            {
-                Console.WriteLine(player.Stream.Length + "      " + player.Stream.Position);
-                if (player.Stream.Length == player.Stream.Position)
-                {
-                    player.Stream = null;  //  NEW 2015
-                    return true;
-
-
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                return true;
-            }
-        }
-
         void tts_SpeakCompleted(object sender, SpeakCompletedEventArgs e)
         {
             if (player.Stream != null)
             {
                 //play stream
-                finished = false;
                 player.Stream.Position = 0;
-                player.PlaySync();
+                player.Play();
                 player.Stream = null;  //  NEW 2015
-
             }
         }
     }

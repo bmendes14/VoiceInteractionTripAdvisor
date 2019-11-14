@@ -122,7 +122,7 @@ namespace AppGui
             try
             {
                 driver.FindElement(By.XPath("//div[@title='"+kitchenType+"']")).Click();
-                System.Threading.Thread.Sleep(1000);
+                System.Threading.Thread.Sleep(2000);
                 driver.FindElement(By.XPath("//div[@class=\"applyButton ui_button primary\"]")).Click();
 
 
@@ -359,27 +359,28 @@ namespace AppGui
                 if(FindElementIfExists(driver,By.XPath("//div[@class='_2EFRp_bb']"))!=null)
                 {
                     driver.FindElement(By.XPath("//div[@class='_2EFRp_bb']")).Click();
-                    System.Threading.Thread.Sleep(1000);
+                    System.Threading.Thread.Sleep(1500);
                     driver.FindElement(By.XPath("//span[@class='ui_icon restaurants brand-quick-links-QuickLinkTileItem__icon--2iguo']")).Click();
                     driver.FindElement(By.XPath("//input[@class='Smftgery']")).SendKeys(place);
-                    System.Threading.Thread.Sleep(1000);
+                    System.Threading.Thread.Sleep(1500);
                     driver.FindElement(By.XPath("//span[@class='common-typeahead-results-BasicResult__resultTitle--1TQbu' and contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'),'" + place.ToLower() + "')]")).Click();
                 }
                 //verificação se cidade já foi procurada e queremos procurar outra cidade
                    else if(FindElementIfExists(driver,By.XPath("//span[@class='ui_icon caret-down brand-global-nav-geopill-GeoPill__icon--3Uykj']"))!=null)
                 {
                     driver.FindElement(By.XPath("//span[@class='ui_icon caret-down brand-global-nav-geopill-GeoPill__icon--3Uykj']")).Click();
-                    System.Threading.Thread.Sleep(1000);
+                    System.Threading.Thread.Sleep(1500);
                     driver.FindElement(By.XPath("//input[@class='Smftgery']")).SendKeys(place);
-                    System.Threading.Thread.Sleep(1000);
+                    System.Threading.Thread.Sleep(1500);
                     driver.FindElement(By.XPath("//span[@class='common-typeahead-results-BasicResult__resultTitle--1TQbu' and contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'),'" + place.ToLower() + "')]")).Click();
                 }
                 //caso seja o caso default, estamos na página principal sem ter procurado nenhuma cidade
                 else
                 {
                     driver.FindElement(By.XPath("//span[@class='ui_icon restaurants brand-quick-links-QuickLinkTileItem__icon--2iguo']")).Click();
+                    System.Threading.Thread.Sleep(1500);
                     driver.FindElement(By.XPath("//input[@class='Smftgery']")).SendKeys(place);
-                    System.Threading.Thread.Sleep(1000);
+                    System.Threading.Thread.Sleep(1500);
                     driver.FindElement(By.XPath("//span[@class='common-typeahead-results-BasicResult__resultTitle--1TQbu' and contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'),'" + place.ToLower() + "')]")).Click();
 
                 }

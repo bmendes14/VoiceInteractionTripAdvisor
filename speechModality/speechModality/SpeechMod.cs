@@ -85,8 +85,16 @@ namespace speechModality
             {
                 if (grammarLoaded == true)
                 {
-                    sre.UnloadGrammar(loaded);
-                    Console.WriteLine("Grammar unloaded");
+                    try
+                    {
+                        sre.UnloadGrammar(loaded);
+                        Console.WriteLine("Grammar unloaded");
+                    }
+                    catch(Exception ex)
+                    {
+                        Console.WriteLine(ex);
+                    }
+                   
                 }
                 sre.LoadGrammar(toLoad);
                 Console.WriteLine("Grammar loaded");
@@ -231,7 +239,15 @@ namespace speechModality
                     case "Confirm":
                         if (e.Result.Semantics.ToArray()[1].Value.Value.ToString().Equals("Sim"))
                         {
-                            e = eventQueue.Dequeue();
+                            try
+                            {
+                               e = eventQueue.Dequeue();
+                            }
+                            catch(Exception ex)
+                            {
+                                Console.WriteLine(ex);
+                            }
+                            
 
                             t.Speak("Estou a efectuar a acção pedida!!");
 
@@ -251,7 +267,14 @@ namespace speechModality
                         else
                         {
                             t.Speak("Pesquisa cancelada, por fovor qual é a proxima ação");
-                            eventQueue.Dequeue();
+                            try
+                            {
+                                e = eventQueue.Dequeue();
+                            }
+                            catch(Exception ex)
+                            {
+                                Console.WriteLine(ex);
+                            }
                             return false;
                         }
 
