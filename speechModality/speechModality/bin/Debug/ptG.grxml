@@ -18,8 +18,17 @@
             <tag>out.CidadeUnica = rules.Cidades.Cidades;</tag>
           </item>
           <item>
-            <ruleref uri="#VerboEscolherCidadeRestaurante"/>
-            <ruleref uri="#Cidades"/>
+            <one-of>
+              <item>
+                  <ruleref uri="#VerboEscolher"/>
+                  <ruleref uri="#Cidades"/>
+              </item>
+              <item>
+                  <ruleref uri="#VerboEscolher"/>
+                  <ruleref uri="#ArtigosDefinidos"/>
+                  <ruleref uri="#Cidades"/>
+              </item>
+            </one-of>
             <tag>out.CidadeUnica = rules.Cidades.Cidades;</tag>
           </item>
         </one-of>
@@ -32,23 +41,56 @@
             <tag>out.Comidas = rules.Comidas.Comidas;</tag>
           </item>
           <item>
-            <ruleref uri="#VerboEscolherTipoComida"/>
-            <ruleref uri="#Comidas"/>
-            <tag>out.Comidas = rules.Comidas.Comidas;</tag>
+            <one-of>
+                <item>
+                    <ruleref uri="#VerboEscolher"/>
+                    <ruleref uri="#Comidas"/>
+                    <tag>out.Comidas = rules.Comidas.Comidas;</tag> 
+                </item>
+                <item>
+                    <ruleref uri="#VerboEscolher"/>
+                    <ruleref uri="#ArtigosDefinidos"/>
+                    <ruleref uri="#Comidas"/>
+                    <tag>out.Comidas = rules.Comidas.Comidas;</tag> 
+                </item>
+                <item>
+                    <ruleref uri="#VerboEscolher"/>
+                    <ruleref uri="#ArtigosIndefinidos"/>
+                    <ruleref uri="#Comidas"/>
+                    <tag>out.Comidas = rules.Comidas.Comidas;</tag> 
+                </item>
+            </one-of>
           </item>
         </one-of>
       </item>
       <item>
         <tag>out.Categoria = "Cozinhasepratos";</tag>
-        <one-of>
+        <one-of> 
           <item>
             <ruleref uri="#Cozinhasepratos"/>
             <tag>out.Cozinhasepratos = rules.Cozinhasepratos.Cozinhasepratos;</tag>
           </item>
           <item>
-            <ruleref uri="#VerboEscolherTipoComida"/>
-            <ruleref uri="#Cozinhasepratos"/>
-            <tag>out.Cozinhasepratos = rules.Cozinhasepratos.Cozinhasepratos;</tag>
+            <one-of>
+              <item>
+                  <ruleref uri="#VerboEscolher"/>
+                  <ruleref uri="#Cozinhasepratos"/>
+                  <tag>out.Cozinhasepratos = rules.Cozinhasepratos.Cozinhasepratos;</tag>
+              </item>
+              <item>
+                  <ruleref uri="#VerboEscolher"/>
+                  <ruleref uri="#ArtigosDefinidos"/>
+                  <ruleref uri="#Cozinhasepratos"/>
+                  <tag>out.Cozinhasepratos = rules.Cozinhasepratos.Cozinhasepratos;</tag>
+              </item>
+              <item>
+                  <ruleref uri="#VerboEscolher"/>
+                  <ruleref uri="#ArtigosIndefinidos"/>
+                  <ruleref uri="#Cozinhasepratos"/>
+                  <tag>out.Cozinhasepratos = rules.Cozinhasepratos.Cozinhasepratos;</tag>
+              </item>
+            </one-of>
+            
           </item>
         </one-of>
       </item>
@@ -60,9 +102,25 @@
             <tag>out.Tipodeestabelecimento = rules.Tipodeestabelecimento.Tipodeestabelecimento;</tag>
           </item>
           <item>
-            <ruleref uri="#VerboEscolherTipoComida"/>
-            <ruleref uri="#Tipodeestabelecimento"/>
-            <tag>out.Tipodeestabelecimento = rules.Tipodeestabelecimento.Tipodeestabelecimento;</tag>
+            <one-of>
+              <item>
+                <ruleref uri="#VerboEscolher"/>
+                <ruleref uri="#Tipodeestabelecimento"/>
+                <tag>out.Tipodeestabelecimento = rules.Tipodeestabelecimento.Tipodeestabelecimento;</tag>
+              </item>
+              <item>
+                  <ruleref uri="#VerboEscolher"/>
+                  <ruleref uri="#ArtigosDefinidos"/>
+                  <ruleref uri="#Tipodeestabelecimento"/>
+                  <tag>out.Tipodeestabelecimento = rules.Tipodeestabelecimento.Tipodeestabelecimento;</tag>
+              </item>
+              <item>
+                  <ruleref uri="#VerboEscolher"/>
+                  <ruleref uri="#ArtigosIndefinidos"/>
+                  <ruleref uri="#Tipodeestabelecimento"/>
+                  <tag>out.Tipodeestabelecimento = rules.Tipodeestabelecimento.Tipodeestabelecimento;</tag>
+              </item>
+            </one-of>
           </item>
         </one-of>
       </item>
@@ -73,9 +131,29 @@
             <ruleref uri="#TipodeReserva"/>
             <tag>out.TipodeReserva = rules.TipodeReserva.TipodeReserva;</tag>
           </item>
+          <item>
+            <one-of>
+                <item>
+                    <ruleref uri="#VerboEscolher"/>
+                    <ruleref uri="#TipodeReserva"/>
+                    <tag>out.TipodeReserva = rules.TipodeReserva.TipodeReserva;</tag>
+                </item>
+                <item>
+                    <ruleref uri="#VerboEscolher"/>
+                    <ruleref uri="#ArtigosDefinidos"/>
+                    <ruleref uri="#TipodeReserva"/>
+                    <tag>out.TipodeReserva = rules.TipodeReserva.TipodeReserva;</tag>
+                </item>
+                <item>
+                    <ruleref uri="#VerboEscolher"/>
+                    <ruleref uri="#ArtigosIndefinidos"/>
+                    <ruleref uri="#TipodeReserva"/>
+                    <tag>out.TipodeReserva = rules.TipodeReserva.TipodeReserva;</tag>
+                </item>
+            </one-of>
+          </item>
         </one-of>
       </item>
-
       <item>
         <tag>out.Categoria = "Restricoesalimentares";</tag>
         <one-of>
@@ -83,9 +161,29 @@
             <ruleref uri="#Restricoesalimentares"/>
             <tag>out.Restricoesalimentares = rules.Restricoesalimentares.Restricoesalimentares;</tag>
           </item>
+          <item>
+              <one-of>
+                  <item>
+                      <ruleref uri="#VerboEscolher"/>
+                      <ruleref uri="#Restricoesalimentares"/>
+                      <tag>out.Restricoesalimentares = rules.Restricoesalimentares.Restricoesalimentares;</tag>
+                  </item>
+                  <item>
+                      <ruleref uri="#VerboEscolher"/>
+                      <ruleref uri="#ArtigosDefinidos"/>
+                      <ruleref uri="#Restricoesalimentares"/>
+                      <tag>out.Restricoesalimentares = rules.Restricoesalimentares.Restricoesalimentares;</tag>
+                  </item>
+                  <item>
+                      <ruleref uri="#VerboEscolher"/>
+                      <ruleref uri="#ArtigosIndefinidos"/>
+                      <ruleref uri="#Restricoesalimentares"/>
+                      <tag>out.Restricoesalimentares = rules.Restricoesalimentares.Restricoesalimentares;</tag>
+                  </item>
+              </one-of>
+          </item>
         </one-of>
       </item>
-
       <item>
         <tag>out.Categoria = "Refeicoes";</tag>
         <one-of>
@@ -93,9 +191,29 @@
             <ruleref uri="#Refeicoes"/>
             <tag>out.Refeicoes = rules.Refeicoes.Refeicoes;</tag>
           </item>
+          <item>
+              <one-of>
+                  <item>
+                      <ruleref uri="#VerboEscolher"/>
+                      <ruleref uri="#Refeicoes"/>
+                      <tag>out.Refeicoes = rules.Refeicoes.Refeicoes;</tag>
+                  </item>
+                  <item>
+                      <ruleref uri="#VerboEscolher"/>
+                      <ruleref uri="#ArtigosDefinidos"/>
+                      <ruleref uri="#Refeicoes"/>
+                      <tag>out.Refeicoes = rules.Refeicoes.Refeicoes;</tag>
+                  </item>
+                  <item>
+                      <ruleref uri="#VerboEscolher"/>
+                      <ruleref uri="#ArtigosIndefinidos"/>
+                      <ruleref uri="#Refeicoes"/>
+                      <tag>out.Refeicoes = rules.Refeicoes.Refeicoes;</tag>
+                  </item>
+              </one-of>
+          </item>
         </one-of>
       </item>
-
       <item>
         <tag>out.Categoria = "Preco";</tag>
         <one-of>
@@ -103,9 +221,29 @@
             <ruleref uri="#Preco"/>
             <tag>out.Preco = rules.Preco.Preco;</tag>
           </item>
+          <item>
+              <one-of>
+                  <item>
+                      <ruleref uri="#VerboEscolher"/>
+                      <ruleref uri="#Preco"/>
+                      <tag>out.Preco = rules.Preco.Preco;</tag>
+                  </item>
+                  <item>
+                      <ruleref uri="#VerboEscolher"/>
+                      <ruleref uri="#ArtigosDefinidos"/>
+                      <ruleref uri="#Preco"/>
+                      <tag>out.Preco = rules.Preco.Preco;</tag>
+                  </item>
+                  <item>
+                      <ruleref uri="#VerboEscolher"/>
+                      <ruleref uri="#ArtigosIndefinidos"/>
+                      <ruleref uri="#Preco"/>
+                      <tag>out.Preco = rules.Preco.Preco;</tag>
+                  </item>
+              </one-of>
+          </item>
         </one-of>
       </item>
-
       <item>
         <tag>out.Categoria = "Caracteristicasdorestaurante";</tag>
         <one-of>
@@ -113,15 +251,56 @@
             <ruleref uri="#Caracteristicasdorestaurante"/>
             <tag>out.Caracteristicasdorestaurante = rules.Caracteristicasdorestaurante.Caracteristicasdorestaurante;</tag>
           </item>
+          <item>
+              <one-of>
+                  <item>
+                      <ruleref uri="#VerboEscolher"/>
+                      <ruleref uri="#Caracteristicasdorestaurante"/>
+                      <tag>out.Caracteristicasdorestaurante = rules.Caracteristicasdorestaurante.Caracteristicasdorestaurante;</tag>
+                  </item>
+                  <item>
+                      <ruleref uri="#VerboEscolher"/>
+                      <ruleref uri="#ArtigosDefinidos"/>
+                      <ruleref uri="#Caracteristicasdorestaurante"/>
+                      <tag>out.Caracteristicasdorestaurante = rules.Caracteristicasdorestaurante.Caracteristicasdorestaurante;</tag>
+                  </item>
+                  <item>
+                      <ruleref uri="#VerboEscolher"/>
+                      <ruleref uri="#ArtigosIndefinidos"/>
+                      <ruleref uri="#Caracteristicasdorestaurante"/>
+                      <tag>out.Caracteristicasdorestaurante = rules.Caracteristicasdorestaurante.Caracteristicasdorestaurante;</tag>
+                  </item>
+              </one-of>
+          </item>
         </one-of>
       </item>
-
       <item>
         <tag>out.Categoria = "Bonspara";</tag>
         <one-of>
           <item>
             <ruleref uri="#Bonspara"/>
             <tag>out.Bonspara = rules.Bonspara.Bonspara;</tag>
+          </item>
+          <item>
+              <one-of>
+                  <item>
+                      <ruleref uri="#VerboEscolher"/>
+                      <ruleref uri="#Bonspara"/>
+                      <tag>out.Bonspara = rules.Bonspara.Bonspara;</tag>
+                  </item>
+                  <item>
+                      <ruleref uri="#VerboEscolher"/>
+                      <ruleref uri="#ArtigosDefinidos"/>
+                      <ruleref uri="#Bonspara"/>
+                      <tag>out.Bonspara = rules.Bonspara.Bonspara;</tag>
+                  </item>
+                  <item>
+                      <ruleref uri="#VerboEscolher"/>
+                      <ruleref uri="#ArtigosIndefinidos"/>
+                      <ruleref uri="#Bonspara"/>
+                      <tag>out.Bonspara = rules.Bonspara.Bonspara;</tag>
+                  </item>
+              </one-of>
           </item>
         </one-of>
       </item>
@@ -143,7 +322,6 @@
           </item>
         </one-of>
       </item>
-      
       <item>
         <tag>out.Categoria = "Mais";</tag>
         <one-of>
@@ -151,6 +329,11 @@
             <ruleref uri="#Mais"/>
             <tag>out.Mais = rules.Mais.Mais;</tag>
           </item>
+          <item>
+              <ruleref uri="#MaisVerbos"/>
+              <ruleref uri="#Mais"/>
+              <tag>out.Mais = rules.Mais.Mais;</tag>
+            </item>
         </one-of>
       </item>
     </one-of>
@@ -169,13 +352,28 @@
         <item>
           Sushi<tag>out.Comidas="Sushi"</tag>
         </item>
+        <item>
+            Marisco<tag>out.Comidas="Marisco"</tag>
+        </item>
+        <item>
+            Piza<tag>out.Comidas="Piza"</tag>
+        </item>
+        <item>
+            Italiana<tag>out.Comidas="Italiana"</tag>
+        </item>
+        <item>
+            Saudável<tag>out.Comidas="Saudável"</tag>
+        </item>
+        <item>
+            Chinesa<tag>out.Comidas="Chinesa"</tag>
+        </item>
       </one-of>
     </item>
   </rule>
 
-  <rule id="VerboEscolherCidadeRestaurante">
-    <item repeat="1">
-      <tag>out.VerboEscolherCidadeRestaurante = "VerboEscolherCidadeRestaurante"</tag>
+  <rule id="VerboEscolher">
+    <item repeat="1-2">
+      <tag>out.VerboEscolher = "VerboEscolher"</tag>
       <one-of>
         <item>mostrar</item>
         <item>mostra-me</item>
@@ -183,16 +381,78 @@
         <item>quero</item>
         <item>ver</item>
         <item>pesquisar</item>
+        <item>pesquisa</item>
+        <item>pesquisa-me</item>
+        <item>escolhe-me</item>
+        <item>escolho</item>
+        <item>apetece-me</item>
+        <item>Leva-me</item>
+        <item>comer</item>
+
       </one-of>
     </item>
   </rule>
 
-  <rule id="VerboEscolherTipoComida">
+  <rule id="ArtigosDefinidos">
     <item repeat="1">
-      <tag>out.VerboEscolherTipoComida = "VerboEscolherTipoComida"</tag>
+      <tag>out.ArtigosDefinidos = "ArtigosDefinidos"</tag>
       <one-of>
-        <item>quero</item>
-        <item>escolho</item>
+          <item>o</item>
+          <item>a</item>
+          <item>as</item>
+          <item>os</item>
+      </one-of>
+    </item>
+  </rule>
+
+  <rule id="ArtigosIndefinidos">
+      <item repeat="1">
+          <tag>out.ArtigosIndefinidos = "ArtigosIndefinidos"</tag>
+          <one-of>
+              <item>um</item>
+              <item>uma</item>
+              <item>uns</item>
+              <item>umas</item>
+          </one-of>
+        </item>
+  </rule>
+
+  <rule id="Cidades">
+    <item repeat="1">
+      <one-of>
+        <item>
+          Aveiro<tag>out.Cidades = "Aveiro"</tag>
+        </item>
+        <item>
+          Porto<tag>out.Cidades = "Porto"</tag>
+        </item>
+        <item>
+          Lisboa<tag>out.Cidades = "Lisboa"</tag>
+        </item>
+        <item>
+          Viseu<tag>out.Cidades = "Viseu"</tag>
+        </item>
+        <item>
+          Coimbra<tag>out.Cidades = "Coimbra"</tag>
+        </item>
+        <item>
+          Braga<tag>out.Cidades = "Braga"</tag>
+        </item>
+        <item>
+          Guimarães<tag>out.Cidades = "Guimarães"</tag>
+        </item>
+        <item>
+          Sintra<tag>out.Cidades = "Sintra"</tag>
+        </item>
+        <item>
+          Vila Nova de Gaia<tag>out.Cidades = "Vila Nova de Gaia"</tag>
+        </item>
+        <item>
+          Albufeira<tag>out.Cidades = "Albufeira"</tag>
+        </item>
+        <item>
+          Leiria<tag>out.Cidades = "Leiria"</tag>
+        </item>
       </one-of>
     </item>
   </rule>
@@ -491,46 +751,6 @@
     </item>
   </rule>
 
-  <rule id="Cidades">
-    <item repeat="1">
-      <one-of>
-        <item>
-          Aveiro<tag>out.Cidades = "Aveiro"</tag>
-        </item>
-        <item>
-          Porto<tag>out.Cidades = "Porto"</tag>
-        </item>
-        <item>
-          Lisboa<tag>out.Cidades = "Lisboa"</tag>
-        </item>
-        <item>
-          Viseu<tag>out.Cidades = "Viseu"</tag>
-        </item>
-        <item>
-          Coimbra<tag>out.Cidades = "Coimbra"</tag>
-        </item>
-        <item>
-          Braga<tag>out.Cidades = "Braga"</tag>
-        </item>
-        <item>
-          Guimarães<tag>out.Cidades = "Guimarães"</tag>
-        </item>
-        <item>
-          Sintra<tag>out.Cidades = "Sintra"</tag>
-        </item>
-        <item>
-          Vila Nova de Gaia<tag>out.Cidades = "Vila Nova de Gaia"</tag>
-        </item>
-        <item>
-          Albufeira<tag>out.Cidades = "Albufeira"</tag>
-        </item>
-        <item>
-          Leiria<tag>out.Cidades = "Leiria"</tag>
-        </item>
-      </one-of>
-    </item>
-  </rule>
-
   <rule id="Limpar">
     <item repeat="1">
       <one-of>
@@ -545,6 +765,14 @@
         <item>
           Seleção
           <tag>out.Limpar = "Seleção"</tag>
+        </item>
+        <item>
+            Apaga tudo
+            <tag>out.Limpar = "Apagar"</tag>
+        </item>
+        <item>
+            tira tudo
+            <tag>out.Limpar = "Apagar"</tag>
         </item>
       </one-of>
     </item>
@@ -599,5 +827,35 @@
       </one-of>
     </item>
   </rule>
+
+  <rule id="MaisVerbos">
+    <item repeat="1">
+        <tag>out.MaisVerbos = "MaisVerbos"</tag>
+      <one-of>
+        <item>Quero ver mais</item>
+        <item>Mostra-me </item>
+        <item>Mostra-me mais </item>
+        <item>Mostra-me mais sobre</item>
+        <item>Gostaria de mais informação sobre</item>
+        <item>Gostaria de mais resultados</item>
+        <item>Gostaria de mais resultados para</item>
+      </one-of>
+    </item>
+  </rule>
+
+<rule id="Preposições">
+  <item repeat="0-1">
+    <one-of>
+      <item>no</item>
+      <item>na</item>
+      <item>em</item>
+      <item>do</item>
+      <item>da</item>
+      <item>de</item>
+    </one-of>
+  </item>
+</rule>
+
+
 
 </grammar>
